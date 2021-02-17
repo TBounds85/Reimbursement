@@ -6,7 +6,7 @@
 	<artifactId>Reimbursement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Reimbursement</name>
+	
 
 
 	<!-- Setting Java to version 1.8 -->
