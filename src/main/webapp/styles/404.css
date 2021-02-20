@@ -17,17 +17,16 @@ button{
 
 .container{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	column-gap: 5em;
-	margin-left:10em;
-	margin-top:10em;
-	margin-right:10em;
+	margin-left:25em;
+	margin-top:25em;
+	margin-right:25em;
 	text-align: center;
-}
-#loginform{
 	align-content: center;
 }
-#logindiv{
+
+#login{
 	display:flex;
 	flex-direction: column;
 	border-radius: .5em;
