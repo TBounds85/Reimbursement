@@ -17,8 +17,8 @@ public class RequestHelper {
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-		case "pages/home":
-			response.sendRedirect("/Reimbursement/pages/home.html");
+//		case "":
+//			response.sendRedirect("/Reimbursement/pages/home.html");
 		
 		
 		default:
