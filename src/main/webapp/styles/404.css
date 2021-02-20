@@ -1,10 +1,5 @@
 @charset "ISO-8859-1";
 
-input{
-	border-radius: 0.5em;
-	
-	
-}
 body {
 	background-color: gold;
 	
@@ -19,19 +14,11 @@ button{
 	display: flex;
 	flex-direction: column;
 	column-gap: 5em;
-	margin-left:25em;
-	margin-top:25em;
-	margin-right:25em;
+	
+	margin-left:10em;
+	margin-top:10em;
+	margin-right:10em;
 	text-align: center;
 	align-content: center;
 }
 
-#login{
-	display:flex;
-	flex-direction: column;
-	border-radius: .5em;
-	border-style: groove;
-	border-width: .5px;
-	padding: 3em;
-	
-}
