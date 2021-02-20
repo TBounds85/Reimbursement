@@ -14,9 +14,9 @@ public class ConnectionFactory {
 			
 		Class.forName("org.postgresql.Driver");
 		conn = DriverManager.getConnection(
-				System.getenv("dburl"),
-				System.getenv("dbusername"),
-				System.getenv("dbpassword")
+				System.getenv("PostgresURL"),
+				System.getenv("Postgres Username"),
+				System.getenv("Postgres Password")
 				);
 		}catch(SQLException e) {
 			e.printStackTrace();

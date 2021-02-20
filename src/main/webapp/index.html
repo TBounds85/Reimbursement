@@ -5,7 +5,7 @@
 <meta charset="ISO-8859-1">
 <title>Reimbursement</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="./reimbursment.css"></link>
+<link rel="stylesheet" href="./styles/reimbursment.css"></link>
 </head>
 
 <body>
@@ -14,13 +14,13 @@
 			<h1>Welcome to our Reimbursement Service Page</h1>
 		</div>
 		<div id="loginDiv">
-			<form id="loginForm">
-				<input type="email" placeholder="Email" required /> 
-				<input type="password" placeholder="Password" required />
+			<form id="loginForm" method="post" action="/Reimbursement/api/login">
+				<input type="text" placeholder="Username" name=useremail required/> 
+				<input type="password" placeholder="Password" name=userpassword required/>
 				<button>Login</button>
 			</form>
 		</div>
 	</div>
-	<script src="./reimbursment.js"></script>
+	<script src="./scripts/reimbursment.js"></script>
 </body>
 </html>

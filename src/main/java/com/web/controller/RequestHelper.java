@@ -20,6 +20,7 @@ public class RequestHelper {
 			return " ";
 		
 		default:
+			
 			return "";
 		
 		}
@@ -44,6 +45,7 @@ public class RequestHelper {
 			
 		default:
 			response.setStatus(404);
+			response.sendRedirect("/Reimbursement/404.html");
 		}
 		
 	}
