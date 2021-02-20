@@ -43,7 +43,7 @@ public class LoginFilter implements Filter {
 		//set session to false to have it check for previous session
 		HttpSession session = httpRequest.getSession(false);
 		
-		//the if statement checks for session (null == no previous session)
+		//the if statement checks for previous session (null == no previous session)
 		if(session == null) {
 			httpResponse.sendRedirect("/Reimbursement/index.html");
 		}

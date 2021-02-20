@@ -82,13 +82,12 @@ public class MyHttpServlet extends HttpServlet {
 			response.getWriter().write("Client Not Authorized");
 		}
 
-//		PrintWriter writer = response.getWriter();
+//		PrintWriter writer = response.getWriter();  //used to write to browser
 		RequestHelper.processPost(request, response);
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

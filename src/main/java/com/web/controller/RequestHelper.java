@@ -6,42 +6,50 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.web.dao.LoginVerificationDAO;
+
 public class RequestHelper {
 
 	
-	public static String processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public static int processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-		case "login":
-			
-			return " ";
+		case "pages/home":
+			response.sendRedirect("/Reimbursement/pages/home.html");
+		
 		
 		default:
+			response.setStatus(404);
+			response.sendRedirect("/Reimbursement/404.html");
 			
-			return "";
 		
 		}
+		return 0;
 	}
 	public static void processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
-		final String RESOURCE = URI.replace("/Reimbursement/", "");
+		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
 		
 		switch(RESOURCE) {
 		case "newemployee":
 			
 			//grab submitted data if NOT a String (int, double, boolean, etc) have to parse
-			final int employeeId = Integer.parseInt(request.getParameter("employeeid"));
+//			final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeid"));
 			
 			//grab Strings
-			final String firstName = request.getParameter("firstname");
+			final String FIRSTNAME = request.getParameter("firstname");
 			break;
 			
 		case "login":
-			
+			final String USERNAME = request.getParameter("username");
+			final String PASSWORD = request.getParameter("password");
+			LoginVerificationDAO.validate(USERNAME,PASSWORD);
+			//if password matches database
+			response.sendRedirect("/Reimbursement/pages/home.html");
 			
 		default:
 			response.setStatus(404);

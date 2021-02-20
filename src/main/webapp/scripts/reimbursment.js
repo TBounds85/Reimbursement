@@ -11,7 +11,7 @@ function validatePassword() {
 		if(hasNoMessage === true){
 			let loginForm = document.getElementById('loginForm');
 			let errorMessage = document.createElement('p');
-			errorMessage.innerText = "Password Must Be at Least 8 Chacters";
+			errorMessage.innerText = "Password Must Be at Least 8 Characters";
 			loginForm.append(errorMessage);
 			hasNoMessage = false;
 		}
