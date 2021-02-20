@@ -2,13 +2,12 @@
 
 input{
 	border-radius: 0.5em;
-	
-	
 }
+
 body {
 	background-color: gold;
-	
 }
+
 button{
 	border-radius: 0.5em;
 	background-color: black;
@@ -24,9 +23,7 @@ button{
 	margin-right:10em;
 	text-align: center;
 }
-#loginform{
-	align-content: center;
-}
+
 #logindiv{
 	display:flex;
 	flex-direction: column;
@@ -34,5 +31,4 @@ button{
 	border-style: groove;
 	border-width: .5px;
 	padding: 3em;
-	
 }
