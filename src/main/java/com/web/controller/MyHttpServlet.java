@@ -64,8 +64,9 @@ public class MyHttpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String USERNAME = request.getParameter("username");
+		final String PASSWORD = request.getParameter("password");
 		
-		if (USERNAME != null) {
+		if (USERNAME != null && PASSWORD != null) {
 			Cookie Sugar = new Cookie("sessionId", "sessionValue");
 			response.addCookie(Sugar);
 		}

@@ -48,7 +48,7 @@ public class RequestHelper {
 			final String USERNAME = request.getParameter("username");
 			final String PASSWORD = request.getParameter("password");
 			//if password matches database
-			if(LoginVerificationDAO.validate(USERNAME,PASSWORD) == true) {
+			if(LoginVerificationDAO.validate(USERNAME,PASSWORD)) {
 				response.sendRedirect("/Reimbursement/pages/home.html");
 			}else 
 				response.sendRedirect("/Reimbursement/invalid.html");
