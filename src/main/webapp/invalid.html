@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Invalid Password Entered</title>
+<link rel="stylesheet" href="./styles/invalid.css"></link>
+</head>
+<body>
+	<div class="container">
+		<div id="message">
+			<h1>Welcome to our Reimbursement Service Page</h1>
+			<p>You Have Entered An Invalid Password</p>
+		</div>
+		<div id="logindiv">
+			<form id="loginform" method="post" action="/Reimbursement/api/login">
+				<input type="text" placeholder="Username" name=username required />
+				<input type="password" placeholder="Password" name=password required />
+				<button>Login</button>
+			</form>
+		</div>
+	</div>
+	<script src="./scripts/invalid.js"></script>
+</body>
+</html>
