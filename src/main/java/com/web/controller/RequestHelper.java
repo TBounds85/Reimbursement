@@ -31,7 +31,7 @@ public class RequestHelper {
 		}
 		return 0;
 	}
-	public static void processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public static int processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
@@ -66,6 +66,7 @@ public class RequestHelper {
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");
 		}
+		return 0;
 		
 	}
 

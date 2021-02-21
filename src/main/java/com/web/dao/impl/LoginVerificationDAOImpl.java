@@ -1,7 +1,5 @@
 package com.web.dao.impl;
 
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,15 +23,17 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 				String hql = "SELECT password FROM loginverification WHERE username= :username";
 				 Query<?> query = s.createQuery(hql);
 				query.setParameter("username", username);
-				Object results = query.getSingleResult();
-				
-				tx.commit(); //commits query
-				
-				LoginVerification user = new LoginVerification();
-				user.setUsername(username);
-				user.setPassword(password);
 				
 				
+//				tx.commit(); //commits query
+				LoginVerification results = (LoginVerification) query.getSingleResult();
+				
+				
+//				LoginVerification user = new LoginVerification();
+//				user.setUsername(username);
+//				user.setPassword(password);
+				
+//				user.getPassword().equals(anObject)
 				
 				//before
 				System.out.println(results+" <~~ this is results straight from DB with HQL");

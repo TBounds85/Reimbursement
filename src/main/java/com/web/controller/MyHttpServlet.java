@@ -74,8 +74,8 @@ public class MyHttpServlet extends HttpServlet {
 			response.getWriter().write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
 		}
 
-//		PrintWriter writer = response.getWriter();  //used to write to browser
-		RequestHelper.processPost(request, response);
+		PrintWriter writer = response.getWriter();
+		writer.write(RequestHelper.processPost(request, response)); // to use MyRequestHelper.class
 	}
 
 	@Override
