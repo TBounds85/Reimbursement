@@ -18,10 +18,11 @@ public class MyHttpServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = null;
+//		HttpSession session = null;
 		final String USERNAME = request.getParameter("username");
-		final String PASSWORD = request.getParameter("password");
+//		final String PASSWORD = request.getParameter("password");
 
+		HttpSession session = null;
 		if (USERNAME != null) {
 			session = request.getSession();
 		}
@@ -64,13 +65,13 @@ public class MyHttpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String USERNAME = request.getParameter("username");
-		final String PASSWORD = request.getParameter("password");
+//		final String PASSWORD = request.getParameter("password");
 		
-		if (USERNAME != null && PASSWORD != null) {
+		if (USERNAME != null) {
 			
 			RequestHelper.processPost(request, response);
 		}else {
-			response.getWriter().write("Client Not Authorized");
+			response.getWriter().write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
 		}
 
 //		PrintWriter writer = response.getWriter();  //used to write to browser

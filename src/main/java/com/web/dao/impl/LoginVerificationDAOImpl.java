@@ -1,43 +1,58 @@
 package com.web.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.web.dao.LoginVerificationDAO;
-import com.web.model.loginverification;
+import com.web.model.LoginVerification;
 import com.web.util.HibernateSessionFactory;
 
 public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 
 	@Override
 	public boolean validate(String username, String password) {
-		
-			Session s = null;
+			boolean checker = false;
+			Session s;
 			Transaction tx = null;
-
+			
 			try {
 				s = HibernateSessionFactory.getSession();
 				tx = s.beginTransaction();
-
-				Object pulledPassword = s.createQuery("SELECT password FROM loginverification WHERE username= :username", loginverification.class)
-				.setParameter("username", username);
-				tx.commit();
+				String hql = "SELECT password FROM loginverification WHERE username= :username";
+				 Query<?> query = s.createQuery(hql);
+				query.setParameter("username", username);
+				Object results = query.getSingleResult();
 				
-				String Pass=pulledPassword.toString();
+				tx.commit(); //commits query
+				
+				LoginVerification user = new LoginVerification();
+				user.setUsername(username);
+				user.setPassword(password);
 				
 				
-				if (password.equals(Pass)) {
-					return true;
-				} else
-					return false;
+				
+				//before
+				System.out.println(results+" <~~ this is results straight from DB with HQL");
+				//after
+				String Pass=results.toString();
+				System.out.println(Pass+" <~~this is results.toString()");
+				
+				
+				
+				checker=password.equals(Pass);
+				
+				return checker;
 
 			} catch (HibernateException e) {
 				e.printStackTrace();
 				tx.rollback();
 
 			}
-			return false;
+			return checker;
 		}
 	
 }

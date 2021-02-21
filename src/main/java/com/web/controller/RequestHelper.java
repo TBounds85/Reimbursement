@@ -18,9 +18,10 @@ public class RequestHelper {
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-//		case "":
+//		case "home/":
 //			response.sendRedirect("/Reimbursement/pages/home.html");
-		
+//		
+//		break;
 		
 		default:
 			response.setStatus(404);
@@ -33,24 +34,27 @@ public class RequestHelper {
 	public static void processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
-		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
+		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-		case "newemployee":
+		case "api/addnewemployee":
 			
 			//grab submitted data if NOT a String (int, double, boolean, etc) have to parse
 //			final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeid"));
 			
 			//grab Strings
-			final String FIRSTNAME = request.getParameter("firstname");
+//			final String FIRSTNAME = request.getParameter("firstname");
 			break;
 			
-		case "login":
+		case "api/login":
 			
 			final String USERNAME = request.getParameter("username");
 			final String PASSWORD = request.getParameter("password");
-			//if password matches database
+			
+			//instantiate LoginVerficationDAO interface implements IMPL
 			LoginVerificationDAO  LV = new LoginVerificationDAOImpl();
+			
+			//checks if password matches database
 			Boolean checker = LV.validate(USERNAME, PASSWORD);
 			
 			if(checker == true) {
