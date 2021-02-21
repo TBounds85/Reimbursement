@@ -20,8 +20,7 @@ public class loginverification {
 	String username;
 	@Column
 	String password;
-	@Column
-	boolean manager;
+	
 	
 	public loginverification() {
 		super();
@@ -33,7 +32,7 @@ public class loginverification {
 		this.employeeId = employeeId;
 		this.username = username;
 		this.password = password;
-		this.manager = manager;
+		
 	}
 
 	public int getEmployeeId() {
@@ -60,20 +59,11 @@ public class loginverification {
 		this.password = password;
 	}
 
-	public boolean isManager() {
-		return manager;
-	}
-
-	public void setManager(boolean manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + employeeId;
-		result = prime * result + (manager ? 1231 : 1237);
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -89,8 +79,6 @@ public class loginverification {
 			return false;
 		loginverification other = (loginverification) obj;
 		if (employeeId != other.employeeId)
-			return false;
-		if (manager != other.manager)
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -108,8 +96,9 @@ public class loginverification {
 	@Override
 	public String toString() {
 		return "loginverification [employeeId=" + employeeId + ", username=" + username + ", password=" + password
-				+ ", manager=" + manager + "]";
+				+ "]";
 	}
+
 	
 	
 }

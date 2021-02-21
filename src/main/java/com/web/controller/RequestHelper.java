@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.dao.LoginVerificationDAO;
+import com.web.dao.impl.LoginVerificationDAOImpl;
 
 public class RequestHelper {
 
@@ -45,14 +46,18 @@ public class RequestHelper {
 			break;
 			
 		case "login":
+			
 			final String USERNAME = request.getParameter("username");
 			final String PASSWORD = request.getParameter("password");
 			//if password matches database
-			if(LoginVerificationDAO.validate(USERNAME,PASSWORD)) {
+			LoginVerificationDAO  LV = new LoginVerificationDAOImpl();
+			Boolean checker = LV.validate(USERNAME, PASSWORD);
+			
+			if(checker == true) {
 				response.sendRedirect("/Reimbursement/pages/home.html");
 			}else 
 				response.sendRedirect("/Reimbursement/invalid.html");
-			
+			break;
 		default:
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");

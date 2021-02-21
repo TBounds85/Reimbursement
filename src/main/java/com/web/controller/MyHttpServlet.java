@@ -67,17 +67,7 @@ public class MyHttpServlet extends HttpServlet {
 		final String PASSWORD = request.getParameter("password");
 		
 		if (USERNAME != null && PASSWORD != null) {
-			Cookie Sugar = new Cookie("sessionId", "sessionValue");
-			response.addCookie(Sugar);
-		}
-		
-		Cookie desiredCookie = null;
-		for(Cookie c : request.getCookies()) {
-			if(c.getName().equals("sessionId") && c.getValue().equals("sessionValue")) {
-				desiredCookie = c;
-			}
-		}
-		if(desiredCookie != null) {
+			
 			RequestHelper.processPost(request, response);
 		}else {
 			response.getWriter().write("Client Not Authorized");
