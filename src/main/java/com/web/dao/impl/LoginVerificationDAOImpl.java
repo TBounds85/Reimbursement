@@ -3,7 +3,6 @@ package com.web.dao.impl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import com.web.dao.LoginVerificationDAO;
 import com.web.model.Login;
@@ -20,13 +19,19 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 			try {
 				s = HibernateSessionFactory.getSession();
 				tx = s.beginTransaction();
-				String hql = "SELECT lv.password FROM loginverification lv WHERE lv.username= :username";
-				 Query<?> query = s.createQuery(hql);
-				query.setParameter("username", username);
+				
+				Login results =  s.createQuery("FROM loginverification L WHERE L.username = :username", Login.class)
+						.setParameter("username", username).getSingleResult();
 				
 				
-				
-				Login results = (Login) query.getSingleResult();
+				//same as above
+//				String hql = "SELECT lv.password FROM loginverification lv WHERE lv.username= :username";
+//				 Query<?> query = s.createQuery(hql);
+//				query.setParameter("username", username);
+//				
+//				
+//				
+//				Login results = (Login) query.getSingleResult();
 				
 				
 //				LoginVerification user = new LoginVerification();

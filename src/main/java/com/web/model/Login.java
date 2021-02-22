@@ -5,7 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-@Table(name = "loginverification",schema = "/reimbursement")
+@Table(name = "loginverification",schema = "\"reimbursement\"")
 public class Login {
 
 //	@Id
@@ -13,9 +13,9 @@ public class Login {
 //	@GeneratedValue(generator = "employee_id_seq",strategy = GenerationType.AUTO)
 //	@SequenceGenerator(allocationSize = 1,name = "employee_id_seq",initialValue = 1,sequenceName = "employee_id_seq" )
 //	int employeeId;
-	@Column
+	@Column(name="username")
 	String username;
-	@Column
+	@Column(name="password")
 	String password;
 	
 	
@@ -23,8 +23,8 @@ public class Login {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Login(int employeeId, String username, String password) {
+//int employeeId, <~~pulled from constructor
+	public Login(String username, String password) {
 		super();
 //		this.employeeId = employeeId;
 		this.username = username;
