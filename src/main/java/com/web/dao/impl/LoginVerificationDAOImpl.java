@@ -14,11 +14,12 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 	public boolean validate(String username, String password) {
 			boolean checker = false;
 			Session s;
-			Transaction tx = null;
+			
 			
 			try {
+				
 				s = HibernateSessionFactory.getSession();
-				tx = s.beginTransaction();
+				Transaction tx = s.beginTransaction();
 				
 				Login results =  s.createQuery("FROM loginverification L WHERE L.username = :username", Login.class)
 						.setParameter("username", username).getSingleResult();
@@ -47,7 +48,7 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 				System.out.println(Pass+" <~~this is results.toString()");
 				
 				
-				
+				//checks password are exact match
 				checker=password.equals(Pass);
 				
 				return checker;

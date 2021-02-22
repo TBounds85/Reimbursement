@@ -4,6 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <description></description>
     <display-name>MyHttpServlet</display-name>
@@ -14,10 +15,7 @@
     <servlet-name>MyHttpServlet</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/404.html</location>
-  </error-page>
+
   <servlet>
     <description></description>
     <display-name>MyHttpServlet2</display-name>
@@ -27,5 +25,10 @@
   <servlet-mapping>
     <servlet-name>MyHttpServlet2</servlet-name>
     <url-pattern>/MyHttpServlet2</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
 </web-app>

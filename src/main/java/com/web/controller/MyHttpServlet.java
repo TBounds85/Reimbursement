@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MyHttpServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -18,7 +20,7 @@ public class MyHttpServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
 
@@ -28,29 +30,30 @@ public class MyHttpServlet extends HttpServlet {
 		}
 
 		if (session != null) {
-			response.getWriter().write(RequestHelper.processGet(request, response));
+			writer.write(RequestHelper.processGet(request, response));
 		} else {
-			response.getWriter().write("Client Not Authorized");
+			writer.write("Client Not Authorized");
 		}
 
-		PrintWriter writer = response.getWriter();
+		
 		writer.write(RequestHelper.processGet(request, response)); // to use MyRequestHelper.class
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
 		
 		if (USERNAME != null) {
 			
-			RequestHelper.processPost(request, response);
+//			writer.write(RequestHelper.processPost(request, response));// to use MyRequestHelper.class
+			
+			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
+			writer.write(json);
 		}else {
-			response.getWriter().write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
+			writer.write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
 		}
-
-//		PrintWriter writer =  response.getWriter();
-//		writer.write(RequestHelper.processPost(request, response)); // to use MyRequestHelper.class
 		
 	}
 
