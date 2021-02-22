@@ -12,6 +12,7 @@ public class HibernateSessionFactory {
 	
 	public static Session getSession() {
 		if(sessionFactory == null) {
+						
 			sessionFactory = new Configuration().configure()
 					.setProperty("hibernate.connection.url", System.getenv("PostgresURL"))
 					.setProperty("hibernate.connection.username", System.getenv("Postgres Username"))

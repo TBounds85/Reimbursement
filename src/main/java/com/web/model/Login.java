@@ -6,7 +6,7 @@ import javax.persistence.Column;
 
 @Entity
 @Table(name = "loginverification",schema = "/reimbursement")
-public class LoginVerification {
+public class Login {
 
 //	@Id
 //	@Column(name="employeeid)")
@@ -19,12 +19,12 @@ public class LoginVerification {
 	String password;
 	
 	
-	public LoginVerification() {
+	public Login() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public LoginVerification(int employeeId, String username, String password) {
+	public Login(int employeeId, String username, String password) {
 		super();
 //		this.employeeId = employeeId;
 		this.username = username;
@@ -73,7 +73,7 @@ public class LoginVerification {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LoginVerification other = (LoginVerification) obj;
+		Login other = (Login) obj;
 //		if (employeeId != other.employeeId)
 //			return false;
 		if (password == null) {

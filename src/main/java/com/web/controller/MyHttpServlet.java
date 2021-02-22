@@ -18,7 +18,7 @@ public class MyHttpServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		HttpSession session = null;
+
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
 
@@ -35,32 +35,7 @@ public class MyHttpServlet extends HttpServlet {
 
 		PrintWriter writer = response.getWriter();
 		writer.write(RequestHelper.processGet(request, response)); // to use MyRequestHelper.class
-
-//		/**
-//		 * XML JSON (application/json) HTML (text/html) Plain Text (text/plain)
-//		 */
-//		response.setContentType("application/json"); // Javascript Object Notation
-//
-//		// creating new employee
-//		Employee employee = new Employee(100, "Thomas", "Bounds", 123456789, "123 Test Lane", "Somewhere", "TX", 12345,
-//				"1900-03-18", 1);
-//
-//		// creating List of employees
-//		List<Employee> employees = new ArrayList<>();
-//
-//		// creating Object Mapper
-//		ObjectMapper Om = new ObjectMapper();
-//
-//		// adding employee created to employee list
-//		employees.add(employee);
-//
-//		// converting employee List to JSON
-//		final String JSON = Om.writeValueAsString(employees);
-//
-//		// Printing JSON to Web Container
-//		writer.write(JSON);
 	}
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -74,8 +49,9 @@ public class MyHttpServlet extends HttpServlet {
 			response.getWriter().write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
 		}
 
-		PrintWriter writer = response.getWriter();
-		writer.write(RequestHelper.processPost(request, response)); // to use MyRequestHelper.class
+//		PrintWriter writer =  response.getWriter();
+//		writer.write(RequestHelper.processPost(request, response)); // to use MyRequestHelper.class
+		
 	}
 
 	@Override

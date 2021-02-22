@@ -18,10 +18,10 @@ public class RequestHelper {
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-//		case "home/":
-//			response.sendRedirect("/Reimbursement/pages/home.html");
-//		
-//		break;
+		case "api/logout/":
+			response.sendRedirect("/Reimbursement/index.html");
+		
+		break;
 		
 		default:
 			response.setStatus(404);

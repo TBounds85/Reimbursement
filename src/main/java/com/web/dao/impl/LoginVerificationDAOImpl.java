@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.web.dao.LoginVerificationDAO;
-import com.web.model.LoginVerification;
+import com.web.model.Login;
 import com.web.util.HibernateSessionFactory;
 
 public class LoginVerificationDAOImpl implements LoginVerificationDAO{
@@ -20,21 +20,21 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 			try {
 				s = HibernateSessionFactory.getSession();
 				tx = s.beginTransaction();
-				String hql = "SELECT password FROM loginverification WHERE username= :username";
+				String hql = "SELECT lv.password FROM loginverification lv WHERE lv.username= :username";
 				 Query<?> query = s.createQuery(hql);
 				query.setParameter("username", username);
 				
 				
-//				tx.commit(); //commits query
-				LoginVerification results = (LoginVerification) query.getSingleResult();
+				
+				Login results = (Login) query.getSingleResult();
 				
 				
 //				LoginVerification user = new LoginVerification();
 //				user.setUsername(username);
 //				user.setPassword(password);
 				
-//				user.getPassword().equals(anObject)
-				
+//				resu
+				tx.commit(); //commits query
 				//before
 				System.out.println(results+" <~~ this is results straight from DB with HQL");
 				//after
@@ -49,7 +49,7 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 
 			} catch (HibernateException e) {
 				e.printStackTrace();
-				tx.rollback();
+			
 
 			}
 			return checker;

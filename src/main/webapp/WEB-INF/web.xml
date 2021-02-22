@@ -14,25 +14,18 @@
     <servlet-name>MyHttpServlet</servlet-name>
     <url-pattern>/api/*</url-pattern>
   </servlet-mapping>
-
-<!-- COMMENTED OUT
-  <filter>
-    <display-name>LoginFilter</display-name>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>com.web.controller.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
-    <url-pattern>/pages/*</url-pattern>
-  </filter-mapping>
-  -->
-  
-  
-  
-  
   <error-page>
- 	 <error-code>404</error-code>
- 	 <location>/404.html</location>
+    <error-code>404</error-code>
+    <location>/404.html</location>
   </error-page>
-
+  <servlet>
+    <description></description>
+    <display-name>MyHttpServlet2</display-name>
+    <servlet-name>MyHttpServlet2</servlet-name>
+    <servlet-class>com.web.controller.MyHttpServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyHttpServlet2</servlet-name>
+    <url-pattern>/MyHttpServlet2</url-pattern>
+  </servlet-mapping>
 </web-app>
