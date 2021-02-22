@@ -15,6 +15,7 @@ public class RequestHelper {
 	public static int processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
+		System.out.println(URI);
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
@@ -34,6 +35,7 @@ public class RequestHelper {
 	public static int processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final String URI = request.getRequestURI();
+		System.out.println(URI);
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {

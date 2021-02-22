@@ -19,7 +19,8 @@ public class MyHttpServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		final String URI = request.getRequestURI();
+		System.out.println(URI);
 		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
@@ -30,7 +31,11 @@ public class MyHttpServlet extends HttpServlet {
 		}
 
 		if (session != null) {
-			writer.write(RequestHelper.processGet(request, response));
+			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
+			response.getWriter().write(json);
+			
+			
+//			writer.write(RequestHelper.processGet(request, response));
 		} else {
 			writer.write("Client Not Authorized");
 		}
@@ -40,7 +45,8 @@ public class MyHttpServlet extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		final String URI = request.getRequestURI();
+		System.out.println(URI);
 		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
