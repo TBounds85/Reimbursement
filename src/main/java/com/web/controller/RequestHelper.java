@@ -64,6 +64,7 @@ public class RequestHelper {
 			}else 
 				response.sendRedirect("/Reimbursement/invalid.html");
 			break;
+		
 		default:
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");

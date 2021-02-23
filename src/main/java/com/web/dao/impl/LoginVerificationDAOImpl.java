@@ -21,7 +21,7 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 				s = HibernateSessionFactory.getSession();
 				Transaction tx = s.beginTransaction(); //sets tx as query+beginTransaction
 				
-				Login results =  s.createQuery("FROM loginverification L WHERE L.username = :username", Login.class)
+				Login results =  s.createQuery("Select password FROM login WHERE username = :username", Login.class)
 						.setParameter("username", username).getSingleResult();
 				
 				
@@ -39,8 +39,9 @@ public class LoginVerificationDAOImpl implements LoginVerificationDAO{
 //				user.setUsername(username);
 //				user.setPassword(password);
 				
-//				resu
+//				
 				tx.commit(); //commits query
+				
 				//before
 				System.out.println(results+" <~~ this is results straight from DB with HQL");
 				//after
