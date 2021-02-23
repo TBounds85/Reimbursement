@@ -6,24 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import javax.persistence.Column;
 
+
 @Entity
-@Table(name = "loginverification",schema = "\"reimbursement\"")
+@Table(name = "Login",schema = "\"reimbursement\"")
 public class Login {
 
-	@Id
-	@Column(name="username")
+	
+	@Id@Column(name="username")
 	String username;
+	
+	@Column(name="password")
+	String password;
 	
 	@Column(name="employeeid")
 	@GeneratedValue(generator = "employee_id_seq",strategy = GenerationType.AUTO)
 	@SequenceGenerator(allocationSize = 1,name = "employee_id_seq",initialValue = 1,sequenceName = "employee_id_seq" )
 	int employeeId;
-	
-	@Column(name="password")
-	String password;
-	
 	
 	public Login() {
 		super();
@@ -97,12 +98,12 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return password;
+		return "Login [username=" + username + ", password=" + password + ", employeeId=" + employeeId + "]";
 	}
-	
-//	@Override
+
+//	@Override 	//used to return JUST THE password (have to use Getter for ID to return in IMPL if switching to this)
 //	public String toString() {
-//		return "loginverification [employeeId=" + employeeId + ", username=" + username + ", password=" + password
-//				+ "]";
-//	}	
+//		return password;
+//	}
+	
 }

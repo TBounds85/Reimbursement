@@ -1,32 +1,39 @@
 package com.web.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.dao.LoginVerificationDAO;
-import com.web.dao.impl.LoginVerificationDAOImpl;
+import com.web.dao.LoginDAO;
+import com.web.dao.impl.LoginDAOImpl;
 
 public class RequestHelper {
-
+	
 	
 	public static int processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println(request.getParameterNames());
+		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
-		System.out.println(URI);
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-		case "api/logout/":
-			response.sendRedirect("/Reimbursement/index.html");
+			case "invalid/":
+				writer.flush();
+				break;
+			
+			case "api/logout/":
+				writer.flush();
+				System.out.println(request.getParameterNames()+" after flush");
+				response.sendRedirect("/Reimbursement/index.html");
+				break;
 		
-		break;
-		
-		default:
-			response.setStatus(404);
-			response.sendRedirect("/Reimbursement/404.html");
+			default:
+				writer.flush();
+				response.setStatus(404);
+				response.sendRedirect("/Reimbursement/404.html");
 			
 		
 		}
@@ -34,8 +41,8 @@ public class RequestHelper {
 	}
 	public static int processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+//		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
-		System.out.println(URI);
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
@@ -54,14 +61,17 @@ public class RequestHelper {
 			final String PASSWORD = request.getParameter("password");
 			
 			//instantiate LoginVerficationDAO interface implements IMPL
-			LoginVerificationDAO  LV = new LoginVerificationDAOImpl();
+			LoginDAO  LV = new LoginDAOImpl();
 			
 			//checks if password matches database
-			Boolean checker = LV.validate(USERNAME, PASSWORD);
+			int checker = LV.validate(USERNAME, PASSWORD);
 			
-			if(checker == true) {
+			//sets EMPLOYEEID to employeeId# OR -1 if invalid login credentials 
+			request.setAttribute("EMPLOYEEID", checker);
+			
+			if(checker != -1) {	
 				response.sendRedirect("/Reimbursement/pages/home.html");
-			}else 
+			}else 				
 				response.sendRedirect("/Reimbursement/invalid.html");
 			break;
 		

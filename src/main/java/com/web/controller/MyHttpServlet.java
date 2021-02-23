@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +18,7 @@ public class MyHttpServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final String URI = request.getRequestURI();
-		System.out.println(URI);
+		
 		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
@@ -33,39 +31,39 @@ public class MyHttpServlet extends HttpServlet {
 		if (session != null) {
 			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
 			writer.write(json);
-			
-			
-//			writer.write(RequestHelper.processGet(request, response));
+//			writer.write(RequestHelper.processGet(request, response)); //not in json Wrapper 
 		} else {
 			writer.write("Client Not Authorized");
 		}
 
-		
 		writer.write(RequestHelper.processGet(request, response)); // to use MyRequestHelper.class
-	}
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		final String URI = request.getRequestURI();
-		System.out.println(URI);
-		PrintWriter writer = response.getWriter();
-		final String USERNAME = request.getParameter("username");
-//		final String PASSWORD = request.getParameter("password");
-		
-		if (USERNAME != null) {
-			
-//			writer.write(RequestHelper.processPost(request, response));// to use MyRequestHelper.class
-			
-			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
-			writer.write(json);
-		}else {
-			writer.write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
-		}
-		
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		PrintWriter writer = response.getWriter();
+		final String USERNAME = request.getParameter("username");
+//		final String PASSWORD = request.getParameter("password");
+
+		if (USERNAME != null) {
+
+//			writer.write(RequestHelper.processPost(request, response));// to use MyRequestHelper.class
+
+			// converts RequestHelper class as json string
+			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
+			// writes response in json
+			writer.write(json);
+		} else {
+			writer.write("YOU KNOW YOU CANT DO THAT!!!! Login Like You're Supposed To.");
+		}
+
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 
