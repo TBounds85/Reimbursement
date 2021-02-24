@@ -1,35 +1,34 @@
 package com.web.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "\"reimbursement\"")
 public class Manager {
-	
+
+	@Id
+	@Column
 	int managerId;
+	@Column
 	String firstName;
+	@Column
 	String lastName;
-	double contact;
-	String address;
-	String city;
-	String state;
-	int zipcode;
-	String dob;
+	@Column
 	int department;
-	
+
 	public Manager() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(int managerId, String firstName, String lastName, double contact, String address, String city,
-			String state, int zipcode, String dob, int department) {
+	public Manager(int managerId, String firstName, String lastName, int department) {
 		super();
 		this.managerId = managerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.contact = contact;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
-		this.dob = dob;
 		this.department = department;
 	}
 
@@ -57,54 +56,6 @@ public class Manager {
 		this.lastName = lastName;
 	}
 
-	public double getContact() {
-		return contact;
-	}
-
-	public void setContact(double contact) {
-		this.contact = contact;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public int getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getDob() {
-		return dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-
 	public int getDepartment() {
 		return department;
 	}
@@ -112,6 +63,48 @@ public class Manager {
 	public void setDepartment(int department) {
 		this.department = department;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + department;
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + managerId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Manager other = (Manager) obj;
+		if (department != other.department)
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (managerId != other.managerId)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Manager [managerId=" + managerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", department=" + department + "]";
+	}
+
 }

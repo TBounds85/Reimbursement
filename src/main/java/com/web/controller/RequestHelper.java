@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.web.dao.LoginDAO;
 import com.web.dao.impl.LoginDAOImpl;
+import com.web.model.Login;
 
 public class RequestHelper {
 	
@@ -31,7 +32,7 @@ public class RequestHelper {
 				break;
 		
 			default:
-				writer.flush();
+				
 				response.setStatus(404);
 				response.sendRedirect("/Reimbursement/404.html");
 			
@@ -60,6 +61,11 @@ public class RequestHelper {
 			final String USERNAME = request.getParameter("username");
 			final String PASSWORD = request.getParameter("password");
 			
+			Login user = new Login();
+			user.setUsername(USERNAME.toLowerCase());
+			user.setPassword(PASSWORD);
+			user.setEmployeeId(-1); //set to -1 to cause redirect of invalid credentials
+			user.setManager(false);
 			//instantiate LoginVerficationDAO interface implements IMPL
 			LoginDAO  LV = new LoginDAOImpl();
 			
@@ -70,6 +76,8 @@ public class RequestHelper {
 			request.setAttribute("EMPLOYEEID", checker);
 			
 			if(checker != -1) {	
+				boolean manager = LV.checkIfManager();
+				
 				response.sendRedirect("/Reimbursement/pages/home.html");
 			}else 				
 				response.sendRedirect("/Reimbursement/invalid.html");

@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -35,7 +36,8 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		
+		// place your code here
+
 		//must downcast it from ServletRequest to HttpServletRequest
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -50,6 +52,10 @@ public class LoginFilter implements Filter {
 
 		// pass the request along the filter chain if they have a session
 		else chain.doFilter(request, response);
+		
+		
+		// pass the request along the filter chain
+		chain.doFilter(request, response);
 	}
 
 	/**
