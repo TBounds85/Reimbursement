@@ -1,7 +1,9 @@
 package com.web.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,15 +42,17 @@ public class Employee {
 	@Column
 	boolean manager;
 	
-	//join with login
-	@OneToOne
-	@JoinColumn(foreignKey =   )
+	//join with Login records
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="loginInfo_FK")
 	private Login loginInfo;
 	
 	
-	Public loginInfo getLoginInfo() {
-		
-	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -160,6 +164,14 @@ public class Employee {
 
 	public void setManager(boolean manager) {
 		this.manager = manager;
+	}
+
+	public Login getLoginInfo() {
+		return loginInfo;
+	}
+
+	public void setLoginInfo(Login loginInfo) {
+		this.loginInfo = loginInfo;
 	}
 
 	@Override
