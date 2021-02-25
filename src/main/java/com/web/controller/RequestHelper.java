@@ -47,6 +47,8 @@ public class RequestHelper {
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
+		
+		
 		case "api/submitrequest":
 			
 			
@@ -79,7 +81,9 @@ public class RequestHelper {
 			
 			if(checker != -1) {	
 				boolean manager = LV.checkIfManager();
-				
+				if(manager ==true) {
+				response.sendRedirect("/Reimbursement/pages/MHome.html");	
+				}else
 				response.sendRedirect("/Reimbursement/pages/home.html");
 			}else 				
 				response.sendRedirect("/Reimbursement/invalid.html");

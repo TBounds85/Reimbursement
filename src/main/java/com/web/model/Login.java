@@ -9,10 +9,11 @@ import javax.persistence.Table;
 @Table(schema = "\"reimbursement\"")
 public class Login {
 	
-	@Id
+	
 	@Column()
 	int employeeId;
 	
+	@Id
 	@Column
 	String username;
 

@@ -1,10 +1,11 @@
 package com.web.dao.impl;
 
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.transaction.Transaction;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.web.dao.LoginDAO;
 import com.web.model.Login;
@@ -24,13 +25,14 @@ public class LoginDAOImpl implements LoginDAO {
 		try {
 
 			s = HibernateSessionFactory.getSession();
-			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
+			EntityTransaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
 
 			// storing result <~~ of the query
-			Login result = s.createQuery("FROM com.web.model.Login L WHERE L.username = :username", Login.class)
-					.setParameter("username", username).getSingleResult();
-
-			tx.commit(); // commits query (Data Now Available for parsing)
+//			Login result = s.createQuery("FROM com.web.model.Login L WHERE L.username = :username", Login.class)
+//					.setParameter("username", username).getSingleResult();
+			Login result = s.load(Login.class, username);
+			
+//			tx.commit(); // commits query (Data Now Available for parsing)
 
 			// checks password are exact match
 			boolean checker = password.equals(result.getPassword());

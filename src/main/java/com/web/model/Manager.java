@@ -10,17 +10,17 @@ import javax.persistence.Table;
 public class Manager {
 
 	@Id
-	@Column
 	int employeeId;
+	
 	@Column
-	Dept department;
+	int department;
 
 	public Manager() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(int managerId, Dept department) {
+	public Manager(int managerId, int department) {
 		super();
 		this.employeeId = managerId;
 		this.department = department;
@@ -34,19 +34,21 @@ public class Manager {
 		this.employeeId = managerId;
 	}
 
-	public Dept getDepartment() {
+	public int getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Dept department) {
+	public void setDepartment(int department) {
 		this.department = department;
 	}
+
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + department;
 		result = prime * result + employeeId;
 		return result;
 	}
@@ -60,10 +62,7 @@ public class Manager {
 		if (getClass() != obj.getClass())
 			return false;
 		Manager other = (Manager) obj;
-		if (department == null) {
-			if (other.department != null)
-				return false;
-		} else if (!department.equals(other.department))
+		if (department != other.department)
 			return false;
 		if (employeeId != other.employeeId)
 			return false;

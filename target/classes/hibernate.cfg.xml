@@ -30,13 +30,15 @@
 		<!-- create-drop: Hibernate creates all of tables and then drops them when the application stops running. This is good for testing purposes but not production. -->
 		<!-- validate: Hibernate will validate a pre-existing schema. It will make sure that your java models are mapped in a way that is consistent with existing schema. -->
 		
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<!-- have to map the files used to fill database -->
 		<mapping class="com.web.model.Login"/>
 		<mapping class="com.web.model.Manager"/>
 		<mapping class="com.web.model.Employee"/>
 		<mapping class="com.web.model.Request"/>
+		<mapping class="com.web.model.Dept"/>
+		<mapping class="com.web.model.EmployeeDetails"/>
 	
 	</session-factory>
 	
