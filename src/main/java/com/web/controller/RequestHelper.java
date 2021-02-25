@@ -47,7 +47,9 @@ public class RequestHelper {
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
-		case "api/addnewemployee":
+		case "api/submitrequest":
+			
+			
 			
 			//grab submitted data if NOT a String (int, double, boolean, etc) have to parse
 //			final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeid"));

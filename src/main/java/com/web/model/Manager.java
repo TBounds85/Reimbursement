@@ -11,56 +11,34 @@ public class Manager {
 
 	@Id
 	@Column
-	int managerId;
+	int employeeId;
 	@Column
-	String firstName;
-	@Column
-	String lastName;
-	@Column
-	int department;
+	Dept department;
 
 	public Manager() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(int managerId, String firstName, String lastName, int department) {
+	public Manager(int managerId, Dept department) {
 		super();
-		this.managerId = managerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.employeeId = managerId;
 		this.department = department;
 	}
 
 	public int getManagerId() {
-		return managerId;
+		return employeeId;
 	}
 
 	public void setManagerId(int managerId) {
-		this.managerId = managerId;
+		this.employeeId = managerId;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public int getDepartment() {
+	public Dept getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(int department) {
+	public void setDepartment(Dept department) {
 		this.department = department;
 	}
 
@@ -68,10 +46,8 @@ public class Manager {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + department;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + managerId;
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + employeeId;
 		return result;
 	}
 
@@ -84,27 +60,21 @@ public class Manager {
 		if (getClass() != obj.getClass())
 			return false;
 		Manager other = (Manager) obj;
-		if (department != other.department)
-			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
+		if (department == null) {
+			if (other.department != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!department.equals(other.department))
 			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (managerId != other.managerId)
+		if (employeeId != other.employeeId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Manager [managerId=" + managerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", department=" + department + "]";
+		return "Manager [managerId=" + employeeId + ", department=" + department + "]";
 	}
 
+	
+	
 }

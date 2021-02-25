@@ -5,22 +5,24 @@
 <meta charset="ISO-8859-1">
 <title>Reimbursement</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="./styles/reimbursment.css"></link>
+<link href="styles/reimbursment.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<div class="container">
 		<div id="message">
-			<h1>Welcome to our Reimbursement Service Page</h1>
-		</div>
-		<div id="logindiv">
-			<form id="loginform" method="post" action="/Reimbursement/api/login">
-				<input type="text" placeholder="Username" name=username required/> 
-				<input type="password" placeholder="Password" name=password required/>
-				<button>Login</button>
-			</form>
-		</div>
-	</div>
+		  <h1>Welcome to our Reimbursement Service Page</h1>
+		  <div id="logindiv">
+		    <form id="loginform" method="post" action="/Reimbursement/api/login">
+		      <input type="text" placeholder="Username" name="username" required/>
+		      <div class="row"></div>
+		      <input type="password" placeholder="Password" name="password" required/>
+		      <div class="row"></div>
+		      <button>Login</button>
+	        </form>
+	      </div>
+</div>
+</div>
 	<script src="./scripts/reimbursment.js"></script>
 </body>
 </html>

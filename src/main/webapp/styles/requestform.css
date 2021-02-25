@@ -2,19 +2,24 @@
 
 body {
 	background-color: gold;
-	
 }
-button{
-	border-radius: 0.9em;
+
+
+p {
+	text-align: center;
+	text-decoration: blink;
+}
+
+button {
+	border-radius: 0.5em;
 	background-color: black;
 	color: white;
 }
 
-.container{
+.container {
 	display: flex;
 	flex-direction: column;
 	column-gap: 5em;
-	
 	margin-left:10em;
 	margin-top:5em;
 	margin-right:10em;
@@ -22,3 +27,5 @@ button{
 	align-content: center;
 }
 
+form {
+}

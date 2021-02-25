@@ -25,10 +25,15 @@ button{
 }
 
 #logindiv{
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	border-radius: .5em;
 	border-style: groove;
 	border-width: .5px;
-	padding: 3em;
+	padding-top: 6em;
+	padding-right: 6em;
+	padding-left: 6em;
+	padding-bottom: 6em;
+}
+.container #message h1 {
 }
