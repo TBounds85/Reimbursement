@@ -34,7 +34,6 @@
 		
 		<!-- have to map the files used to fill database -->
 		<mapping class="com.web.model.Login"/>
-		<mapping class="com.web.model.Manager"/>
 		<mapping class="com.web.model.Employee"/>
 		<mapping class="com.web.model.Request"/>
 		<mapping class="com.web.model.Dept"/>

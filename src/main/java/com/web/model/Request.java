@@ -17,11 +17,13 @@ public class Request {
 	@GeneratedValue(generator = "request_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(allocationSize = 1, name = "request_id_seq", initialValue = 1, sequenceName = "request_id_seq")
 	int requestId;
+	
 	@Column
-	 
 	int employeeid;
+	
 	@Column
 	double requestedAmount;
+	
 	@Column
 	String status;
 	

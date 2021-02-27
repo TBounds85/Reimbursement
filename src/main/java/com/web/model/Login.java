@@ -19,21 +19,18 @@ public class Login {
 
 	@Column
 	String password;
-
-	@Column
-	boolean manager;
  
 	public Login() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Login(String username, String password, int employeeId, boolean manager) {
+	public Login(String username, String password, int employeeId) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.employeeId = employeeId;
-		this.manager = manager;
+		
 	}
 
 	public String getUsername() {
@@ -60,20 +57,11 @@ public class Login {
 		this.employeeId = employeeId;
 	}
 
-	public boolean isManager() {
-		return manager;
-	}
-
-	public void setManager(boolean manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + employeeId;
-		result = prime * result + (manager ? 1231 : 1237);
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -90,8 +78,6 @@ public class Login {
 		Login other = (Login) obj;
 		if (employeeId != other.employeeId)
 			return false;
-		if (manager != other.manager)
-			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -107,9 +93,10 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [username=" + username + ", password=" + password + ", employeeId=" + employeeId + ", manager="
-				+ manager + "]";
+		return "Login [employeeId=" + employeeId + ", username=" + username + ", password=" + password + "]";
 	}
+
+	
 
 //	@Override 	//used to return JUST THE password (have to use Getter for ID to return in IMPL if switching to this)
 //	public String toString() {
