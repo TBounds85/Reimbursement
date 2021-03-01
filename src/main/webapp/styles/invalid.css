@@ -1,12 +1,11 @@
 @charset "ISO-8859-1";
 
-body {
-	background-color: gold;
+input{
+	border-radius: 0.5em;
 }
 
-p {
-	text-align: center;
-	text-decoration: blink;
+body {
+	background-color: gold;
 }
 
 button {
@@ -24,4 +23,22 @@ button {
 	margin-right:10em;
 	text-align: center;
 	align-content: center;
+}
+
+#logindiv{
+	display: flex;
+	flex-direction: column;
+	border-radius: .5em;
+	border-style: groove;
+	border-width: .5px;
+	padding-top: 6em;
+	padding-right: 6em;
+	padding-left: 6em;
+	padding-bottom: 6em;
+}
+
+p {
+	text-align: center;
+	text-decoration: blink;
+	color: black;
 }

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.LoginDAO;
@@ -17,19 +18,27 @@ public class RequestHelper {
 	
 	
 	public static int processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameterNames());
+		
 		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
 		switch(RESOURCE) {
+			case "home/":
+				System.out.println(request.getAttribute("EmployeeData"));
+//				
+				
+				
+				int employeeId = Integer.parseInt(request.getParameter("employeeId"));
+//				System.out.(employeeId);
+				
+				break;
 			case "invalid/":
-				writer.flush();
+				
 				break;
 			
 			case "api/logout/":
 				writer.flush();
-				System.out.println(request.getParameterNames()+" after flush");
 				response.sendRedirect("/Reimbursement/index.html");
 				break;
 		
@@ -43,6 +52,7 @@ public class RequestHelper {
 		return 0;
 	}
 	public static int processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
@@ -63,38 +73,40 @@ public class RequestHelper {
 			
 		case "api/login":
 			
+			
 			final String USERNAME = request.getParameter("username");
 			final String PASSWORD = request.getParameter("password");
 			
-			Login user = new Login();
-			user.setUsername(USERNAME.toLowerCase());
-			user.setPassword(PASSWORD);
-			user.setEmployeeId(-1); //set to -1 to cause redirect of invalid credentials
-			//instantiate LoginVerficationDAO interface implements IMPL
+			//instantiate LoginDAO interface implements IMPL
 			LoginDAO  LV = new LoginDAOImpl();
 			
 			//checks if password matches database
 			int checker = LV.validate(USERNAME, PASSWORD);
 			
-//			//sets EMPLOYEEID to employeeId# OR -1 if invalid login credentials 
-//			request.setAttribute("EMPLOYEEID", checker);
-			
 			if(checker != -1) {	
+				
+				//get session create Employee Object with fields
+				HttpSession session = request.getSession();
 				Employee e = LV.setupEmployee(checker);
 				
 				//set employee data to Attribute
 //				request.setAttribute("EmployeeData", e);
-				
+				session.setAttribute("EmployeeData", e);
 				String json = new ObjectMapper().writeValueAsString(e);
-				writer.write(json);		
-						
-						
 				
-				if(e.isManager() == true) {
+				writer.write(json);	
+				System.out.println(e.isManager());
+				if(e.isManager() == true) { //not working
+					
 					response.sendRedirect("/Reimbursement/pages/MHome.html");	
+					break;
 				}else
+					System.out.println(e);
 					response.sendRedirect("/Reimbursement/pages/home.html");
-			}else 				
+					break;
+			}else 
+				System.out.println(request.getParameterNames()+" <~~second else request.get patameterNames");
+
 				response.sendRedirect("/Reimbursement/invalid.html");
 			break;
 		

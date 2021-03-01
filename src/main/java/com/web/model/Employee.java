@@ -23,19 +23,18 @@ public class Employee {
 	int employeeId;
 
 //join with department table
-	@OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "EmployeeDetails_FK")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "EmployeeDetails",table = "employeedetails" ,referencedColumnName = "employeeid")
 	private EmployeeDetails info;
 
 	// join with department table
-	@OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "department_FK")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "department",table = "dept",referencedColumnName = "departmentid")
 	private Dept department;
 
 	@Column
 	boolean manager;
 
-//	Constructors
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub

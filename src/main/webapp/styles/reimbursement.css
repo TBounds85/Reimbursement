@@ -35,5 +35,9 @@ button{
 	padding-left: 6em;
 	padding-bottom: 6em;
 }
-.container #message h1 {
+
+p {
+	text-align: center;
+	text-decoration: blink;
+	color: black;
 }

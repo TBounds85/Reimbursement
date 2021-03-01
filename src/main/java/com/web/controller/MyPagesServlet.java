@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MyHttpServlet2
+ * Servlet implementation class MyPagesServlet
  */
-public final class MyHttpServlet2 extends HttpServlet {
+public final class MyPagesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyHttpServlet2() {
+    public MyPagesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

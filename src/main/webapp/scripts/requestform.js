@@ -20,8 +20,8 @@ function VerifyInputs(){
 		//appending error message to page
 		errorMessageDiv.append(errorMessage);
 		errorMessageDiv.append(insertRow)
-		if (event.cancelable){
-			event.preventDefault();
+		if (Event.cancelable){
+			Event.preventDefault();
 		}
 	}else if(reason=="default"){
 		
@@ -33,8 +33,8 @@ function VerifyInputs(){
 		//appending error message to page
 		errorMessageDiv.append(errorMessage);
 		errorMessageDiv.append(insertRow)
-		if (event.cancelable){
-			event.preventDefault();
+		if (Event.cancelable){
+			Event.preventDefault();
 	}else 
 		window.alert("Your Request Has Been Submitted");
 	

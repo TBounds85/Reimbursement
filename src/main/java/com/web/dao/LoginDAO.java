@@ -6,6 +6,5 @@ public interface LoginDAO {
 
 	int validate(String username, String password);
 	Employee setupEmployee(int employeeId);
-	boolean checkIfManager();
 	
 }

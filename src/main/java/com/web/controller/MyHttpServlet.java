@@ -18,7 +18,7 @@ public class MyHttpServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		PrintWriter writer = response.getWriter();
 		final String USERNAME = request.getParameter("username");
 //		final String PASSWORD = request.getParameter("password");
@@ -47,11 +47,14 @@ public class MyHttpServlet extends HttpServlet {
 		final String USERNAME = request.getParameter("username");
 
 		if (USERNAME != null) {
-
-//			writer.write(RequestHelper.processPost(request, response));// to use MyRequestHelper.class
+			
+			//Generate/implement cookie
+//			Cookie GingerSnap = new Cookie(USERNAME, USERNAME);
+//			
 
 			// converts RequestHelper class as json string
-			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response));
+			String json = new ObjectMapper().writeValueAsString(RequestHelper.processPost(request, response)); // to use MyRequestHelper.class
+			
 			// writes response in json
 			writer.write(json);
 		} else {

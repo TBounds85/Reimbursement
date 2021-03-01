@@ -4,7 +4,7 @@ let inputs = document.getElementsByTagName('input');
 
 function validatePassword() {
 	
-//	let username = inputs[0].value;
+	let username = inputs[0].value;
 	let userPass = inputs[1].value;
 
 	if (userPass.length < 8) {
@@ -15,14 +15,15 @@ function validatePassword() {
 			loginForm.append(errorMessage);
 			hasNoMessage = false;
 		}
-		if (event.cancelable){
-			event.preventDefault();
+		if (Event.cancelable){
+			Event.preventDefault();
 		}
 	}
 }
 
 let button = document.querySelector('button');
 button.addEventListener('click', validatePassword);
+
 
 
 
