@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.LoginDAO;
 import com.web.dao.impl.LoginDAOImpl;
 import com.web.model.Employee;
-import com.web.model.Login;
 
 public class RequestHelper {
 	
@@ -22,23 +21,43 @@ public class RequestHelper {
 		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
-		
+		HttpSession session = request.getSession(false);
 		switch(RESOURCE) {
-			case "home/":
-				System.out.println(request.getAttribute("EmployeeData"));
-//				
+			case "pages/home":
+				session = request.getSession();
 				
 				
-				int employeeId = Integer.parseInt(request.getParameter("employeeId"));
-//				System.out.(employeeId);
+				Object e = session.getAttributeNames();
+				
+				System.out.println(e);
+				break;
+				
+			case "pages/Mhome":
 				
 				break;
-			case "invalid/":
+				
+			case "pages/info":
+				
+				break;
+				
+			case "pages/requestform":
+				
+				break;
+				
+			case "pages/pending":
+				
+				break;
+				
+			case "pages/resolved":
+				
+				break;
+				
+			case "invalid":
 				
 				break;
 			
 			case "api/logout/":
-				writer.flush();
+				
 				response.sendRedirect("/Reimbursement/index.html");
 				break;
 		
@@ -46,7 +65,7 @@ public class RequestHelper {
 				
 				response.setStatus(404);
 				response.sendRedirect("/Reimbursement/404.html");
-			
+			break;
 		
 		}
 		return 0;
@@ -57,9 +76,33 @@ public class RequestHelper {
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/", "");
 		
+		HttpSession session = request.getSession(false);
+		
 		switch(RESOURCE) {
 		
+		case "pages/info":
+			session = request.getSession(false);
+			break;
+			
+		case "pages/requestform":
+			session = request.getSession(false);
+			break;
+			
+		case "pages/pending":
+			session = request.getSession(false);
+			break;
+			
+		case "pages/resolved":
+			session = request.getSession(false);
+			break;
 		
+		case "api/editInfo":
+			break;
+			
+		case "api/logout":
+			session.invalidate();
+			break;
+			
 		case "api/submitrequest":
 			
 			
@@ -82,11 +125,11 @@ public class RequestHelper {
 			
 			//checks if password matches database
 			int checker = LV.validate(USERNAME, PASSWORD);
-			
+			 
 			if(checker != -1) {	
 				
 				//get session create Employee Object with fields
-				HttpSession session = request.getSession();
+				session = request.getSession();
 				Employee e = LV.setupEmployee(checker);
 				
 				//set employee data to Attribute
@@ -95,24 +138,22 @@ public class RequestHelper {
 				String json = new ObjectMapper().writeValueAsString(e);
 				
 				writer.write(json);	
-				System.out.println(e.isManager());
-				if(e.isManager() == true) { //not working
-					
+				
+				if(e.isManager() == true) { 
 					response.sendRedirect("/Reimbursement/pages/MHome.html");	
 					break;
 				}else
-					System.out.println(e);
+					
 					response.sendRedirect("/Reimbursement/pages/home.html");
 					break;
 			}else 
-				System.out.println(request.getParameterNames()+" <~~second else request.get patameterNames");
-
 				response.sendRedirect("/Reimbursement/invalid.html");
 			break;
 		
 		default:
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");
+			break;
 		}
 		return 0;
 		

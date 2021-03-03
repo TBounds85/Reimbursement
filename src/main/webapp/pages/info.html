@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Personal Info</title>
+<meta charset="UTF-8" />
+<link href="styles/info.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<header align="center"><h1>Update Personal Information</h1></header>
+		<div id="personalData" >
+	      <h2>Employee # {{Employee.employeeId}}</h2>
+		    <p >Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
+            <p>Contact #:  {{Employee.contact}}
+		  <input id="contact" class="contactbox"></p>
+          <p>Address:    {{Employee.address}&nbsp; &nbsp; &nbsp;
+			<input id="address" class="addressbox"></p>
+            <p>City:       {{Employee.city}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   
+			<input id="city" class="citybox"></p>
+            <p>State:      {{Employee.state}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		  <input id="state" class="statebox"></p>
+             {{Employee.lastName}}
+          <button id="submitChanges" method="post" >Submit Changes</button> 
+          <button name="backButton" onclick="history.back()">Cancel</button>
+        
+        </div>
+    
+<script src="./scripts/info.js"></script>
+</body>
+</html>

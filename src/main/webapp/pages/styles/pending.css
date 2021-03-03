@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+header{
+	align-content: center;
+}
+.container{
+    display: grid;
+    grid-template-columns: 20em 20em 20em;
+}
+.Request{
+	align-content: center;
+	border-color: black;
+	border-radius: 1em;
+	border-bottom-color: black;
+	padding: .5em;
+		
+		
+}
+body {
+	background-color: gold;
+}
+
+input {
+	border-radius: 1em;
+	padding: inherit;
+	background-color: black;
+	color: white;
+}
+
+p {
+	text-align: center;
+	text-decoration: blink;
+	color: black;
+	button: black;
+	
+}
+h1{
+	align-content: center;
+}
+

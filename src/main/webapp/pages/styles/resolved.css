@@ -1,11 +1,22 @@
+@charset "ISO-8859-1";
 .container{
     display: grid;
     grid-template-columns: 20em 20em 20em 20em;
 
 }
 
-#cssGrid{
-    text-align: center;
+
+header{
+	align-content: center;
+}
+body {
+	background-color: gold;
+}
+input {
+	border-radius: 1em;
+	padding: inherit;
+	background-color: black;
+	color: white;
 }
 
 .request{
@@ -16,3 +27,4 @@
     margin-top: 2em;
     margin-right: 2em;
 }
+

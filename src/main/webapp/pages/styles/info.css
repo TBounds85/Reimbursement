@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+header{
+	align-content: center;
+}
+body {
+	background-color: gold;
+}
+
+button {
+	border-radius: 1em;
+	background-color: black;
+	color: white;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	row-gap: 5em;
+	margin-left:10em;
+	margin-top:5em;
+	margin-right:10em;
+	text-align: center;
+	align-content: center;
+}
+
+p {
+	text-align: left;
+	text-decoration: blink;
+	color: black;
+}
+h1{
+	align-content: center;
+}

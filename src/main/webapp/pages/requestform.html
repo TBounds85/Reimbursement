@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <title>Reimbursement Request Form</title>
-<link href="../styles/requestform.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./styles/home.css"><style type="text/css"></style></link>
 </head>
 
 <body>
-<div class="container">
+
 	<div id="message">
 	<h1>New Reimbursment Request Form</h1>
 	</div>
 
 	<form id="submitrequest" method="post" action="/Reimbursement/api/submitrequest">
 	<div id="errorMessage"></div>
-	Request Amount~~ $
-	<input type="currency" placeholder="Enter $ amount" name="Amount" required/>
+	Request Amount~~ $&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+<input type="currency" placeholder="Enter $ amount" name="Amount" required/>
 	<div class="row"></div>
-	<label for="reason">Select Reason For Request~</label>
+	<label for="reason">Select Reason For Request~&nbsp;</label>
 	<select name="reason" id="reason" required>
-		<option value="default">Select Reason</option>
+	  <option value="default">Select Reason</option>
 		<optgroup label="Travel Expenses">
 		<option value="Meals">Meals</option>
 		<option value="PerDiem">Per Diem</option>
@@ -34,9 +34,15 @@
 		
 		
 	</select>
-	<div class="row">_</div>
+		<div class="row"></div>
+	
 	<div class="row"></div>
-	<button name="submitButton">SUBMIT</button>
+	<div>
+	  <label for="fileField">Additional Documentation ~</label>
+      <input type="file" name="fileField" id="fileField">
+      <p>&nbsp;</p>
+	</div>
+		<button name="submitButton">SUBMIT</button>
 	<button name="backButton" onclick="history.back()">BACK</button>
   </form>
 </div>	

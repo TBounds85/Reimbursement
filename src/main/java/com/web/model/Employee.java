@@ -24,12 +24,12 @@ public class Employee {
 
 //join with department table
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "EmployeeDetails",table = "employeedetails" ,referencedColumnName = "employeeid")
+	@JoinColumn(name = "EmployeeDetails", referencedColumnName = "employeeId")
 	private EmployeeDetails info;
 
 	// join with department table
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "department",table = "dept",referencedColumnName = "departmentid")
+	@JoinColumn(name = "department", referencedColumnName = "departmentId")
 	private Dept department;
 
 	@Column

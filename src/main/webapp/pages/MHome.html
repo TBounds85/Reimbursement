@@ -5,11 +5,41 @@
 <meta charset="ISO-8859-1">
 <title>Manager Home Page</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="./styles/reimbursment.css"></link>
+<link rel="stylesheet" href="./styles/Mhome.css"><style type="text/css"></style></link>
 </head>
 
 <body>
-<h1>WELCOME!!!! MADE IT PAST USERNAME/PASSWORD CHECK & MANAGER CHECK!!</h1>
-</body>
+	
+<header>
+		<h3 align="right">
+	    	<form method="get" id="logoutButton" action="/Reimbursement/">
+			<button>Logout</button></form></h3>
+		<h1 align="center">Reimbursement Manager Services</h1>
+    </header>
+	<table width="1018">
+  		<tbody>
+    		<tr>
+      			<td><div class= "table" id="employeeDataDiv">
+		  			<div>
+						<h2>Employee ID: {{Employee.employeeId}}</h2>
+						<p>Employee Name: {{Employee.lastName}},&nbsp; {{Employee.firstName}}</p>
+						<p>Department: {{Employee.department}}</p>
+					</div>
+					<form method="get" id="infoButton" action="/Reimbursement/pages/info.html">
+						<button>Edit Personal Information</button></form>
+  					<div><h2> Requests</h2></div>
+  					<form method="get" id="newRequestButton" action="/Reimbursement/pages/requestform.html">
+						<button>Submit New Request</button></form>
+					<form method="get" id="pendingButton" action="/Reimbursement/pages/pending.html">
+						<button>Pending Requests</button></form>
+					<form method="get" id="resolvedButton" action="/Reimbursement/pages/resolved.html">
+						<button>Resolved Requests</button></form>
+					</div>
+				</td>
+			</tr>
+ 		</tbody>
+	</table>
 
+		
+</body>
 </html>
