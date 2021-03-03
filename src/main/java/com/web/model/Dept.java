@@ -8,15 +8,17 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "\"reimbursement\"")
 public class Dept {
-	
+
 	@Id
 	@Column
 	int departmentId;
+
 	@Column
 	String departmentName;
+
 	@Column
 	int managerId;
-	
+
 	public Dept() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -89,5 +91,5 @@ public class Dept {
 		return "Dept [departmentId=" + departmentId + ", departmentName=" + departmentName + ", managerId=" + managerId
 				+ "]";
 	}
-	
+
 }

@@ -6,9 +6,10 @@ import com.web.model.Request;
 
 public interface EmployeeDAO {
 	
-	boolean submitRequest(int employeeId);
+	
 	List<Request> pendingRequests(int employeeId);
 	List<Request> resolvedRequests(int employeeId);
-	void updateInformation(int employeeId);
+	boolean submitRequest(int employeeId, double requestedAmount, String reason, int managerId);
+	void updateInformation(int employeeId, double contact, String address, String city, String state, int zipcode);
 	
 }

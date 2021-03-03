@@ -10,7 +10,7 @@ public interface ManagerDAO {
 	List<Request> requestsByEmployeeId(int employeeIdint);
 	List<Employee> allEmployees();
 	List<Employee> assignedEmployee(int departmentId);
-	void approveRequest(int requestId);
-	void denyRequest(int requestId);
+	void approveRequest(int requestId, int employeeId);
+	void denyRequest(int requestId, int employeeId);
 	
 }

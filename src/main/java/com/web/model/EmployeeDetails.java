@@ -3,38 +3,37 @@ package com.web.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(schema = "\"reimbursement\"")
 public class EmployeeDetails {
-	
+
 	@Id
 	@Column
 	int employeeId;
-	
+
 	@Column
 	String firstName;
-	
+
 	@Column
 	String lastName;
-	
+
 	@Column
 	double contact;
-	
+
 	@Column
 	String address;
-	
+
 	@Column
 	String city;
-	
+
 	@Column
 	String state;
-	
+
 	@Column
 	int zipcode;
-	
+
 	@Column
 	String dob;
 
@@ -202,5 +201,4 @@ public class EmployeeDetails {
 				+ zipcode + ", dob=" + dob + "]";
 	}
 
-	
 }

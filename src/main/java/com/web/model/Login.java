@@ -8,18 +8,17 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "\"reimbursement\"")
 public class Login {
-	
-	
+
 	@Column()
 	int employeeId;
-	
+
 	@Id
 	@Column
 	String username;
 
 	@Column
 	String password;
- 
+
 	public Login() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,7 +29,7 @@ public class Login {
 		this.username = username;
 		this.password = password;
 		this.employeeId = employeeId;
-		
+
 	}
 
 	public String getUsername() {
@@ -95,8 +94,6 @@ public class Login {
 	public String toString() {
 		return "Login [employeeId=" + employeeId + ", username=" + username + ", password=" + password + "]";
 	}
-
-	
 
 //	@Override 	//used to return JUST THE password (have to use Getter for ID to return in IMPL if switching to this)
 //	public String toString() {
