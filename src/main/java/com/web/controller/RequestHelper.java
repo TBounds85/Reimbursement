@@ -81,20 +81,14 @@ public class RequestHelper {
 		switch(RESOURCE) {
 		
 		case "pages/info":
-			session = request.getSession(false);
+			
 			break;
 			
 		case "pages/requestform":
-			session = request.getSession(false);
+		
 			break;
 			
-		case "pages/pending":
-			session = request.getSession(false);
-			break;
-			
-		case "pages/resolved":
-			session = request.getSession(false);
-			break;
+
 		
 		case "api/editInfo":
 			break;
@@ -140,7 +134,7 @@ public class RequestHelper {
 				writer.write(json);	
 				
 				if(e.isManager() == true) { 
-					response.sendRedirect("/Reimbursement/pages/MHome.html");	
+					response.sendRedirect("/Reimbursement/pages/Mhome.html");	
 					break;
 				}else
 					
