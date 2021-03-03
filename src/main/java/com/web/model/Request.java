@@ -9,37 +9,36 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Requests",schema = "\"reimbursement\"")
+@Table(name = "Requests", schema = "\"reimbursement\"")
 public class Request {
-	
+
 	@Id
 	@Column
 	@GeneratedValue(generator = "request_id_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(allocationSize = 1, name = "request_id_seq", initialValue = 1, sequenceName = "request_id_seq")
 	int requestId;
-	
+
 	@Column
 	int employeeid;
-	
+
 	@Column
 	double requestedAmount;
-	
+
 	@Column
 	String reason;
-	
+
 	@Column
 	String status;
-	
+
 	@Column
 	int managerId;
-	
+
 	public Request() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Request(int requestId, int employeeid, double requestedAmount, String reason, String status,
-			int managerId) {
+	public Request(int requestId, int employeeid, double requestedAmount, String reason, String status, int managerId) {
 		super();
 		this.requestId = requestId;
 		this.employeeid = employeeid;
@@ -148,5 +147,4 @@ public class Request {
 				+ ", reason=" + reason + ", status=" + status + ", managerId=" + managerId + "]";
 	}
 
-	
 }
