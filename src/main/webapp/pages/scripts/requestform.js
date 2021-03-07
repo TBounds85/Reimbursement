@@ -7,10 +7,10 @@ backButton.addEventListener('click', history.back());
 
 function VerifyInputs(){
 	
-	let requestAmount = inputs[0].value;
+	let amount = inputs[0].value;
 	let reason = inputs[1].value;
 	
-	if(requestAmount < 0){
+	if(amount < 0.01){
 		
 		//set up for insert of error message
 		let errorMessageDiv = document.getElementById('errorMessage');

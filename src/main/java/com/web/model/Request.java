@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Requests", schema = "\"reimbursement\"")
+@Table(name = "requests", schema = "\"reimbursement\"")
 public class Request {
 
 	@Id
@@ -22,7 +22,7 @@ public class Request {
 	int employeeid;
 
 	@Column
-	double requestedAmount;
+	double amount;
 
 	@Column
 	String reason;
@@ -42,7 +42,7 @@ public class Request {
 		super();
 		this.requestId = requestId;
 		this.employeeid = employeeid;
-		this.requestedAmount = requestedAmount;
+		this.amount = requestedAmount;
 		this.reason = reason;
 		this.status = status;
 		this.managerId = managerId;
@@ -65,11 +65,11 @@ public class Request {
 	}
 
 	public double getRequestedAmount() {
-		return requestedAmount;
+		return amount;
 	}
 
 	public void setRequestedAmount(double requestedAmount) {
-		this.requestedAmount = requestedAmount;
+		this.amount = requestedAmount;
 	}
 
 	public String getReason() {
@@ -105,7 +105,7 @@ public class Request {
 		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
 		result = prime * result + requestId;
 		long temp;
-		temp = Double.doubleToLongBits(requestedAmount);
+		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
@@ -131,7 +131,7 @@ public class Request {
 			return false;
 		if (requestId != other.requestId)
 			return false;
-		if (Double.doubleToLongBits(requestedAmount) != Double.doubleToLongBits(other.requestedAmount))
+		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -143,7 +143,7 @@ public class Request {
 
 	@Override
 	public String toString() {
-		return "Request [requestId=" + requestId + ", employeeid=" + employeeid + ", requestedAmount=" + requestedAmount
+		return "Request [requestId=" + requestId + ", employeeid=" + employeeid + ", amount=" + amount
 				+ ", reason=" + reason + ", status=" + status + ", managerId=" + managerId + "]";
 	}
 

@@ -3,19 +3,35 @@ window.onload = () => {
 }
 
 function getRequest(){
-    let url= 'http://localhost:8080/Reimbursement/pages/home'
-    let xhr=new XMLHttpRequest() //RS0
-    let DivEmployeeData = document.getElementById('employeeDataDiv')
+    let url = 'http://localhost:8080/Reimbursement/api/pages/home'
+    let xhr = new XMLHttpRequest() //RS0
+    
 	
-   myStorage.getItem('employeeData')
+
+	
 	xhr.onreadystatechange = function(){
+		
 		if(xhr.readyState === 4 && xhr.status === 200){
-			let myStorage = window.sessionStorage;
-			let employeeInfo=JSON.parse(xhr.responseText)
-			var name = '<%= session.getAttribute("employeeData") %>';
-			DivEmployeeData.append(name);
-			DivEmployeeData.append(employeeInfo);
-			DivEmployeeData.append(myStorage.getItem());
+			
+			//JSON.parse is a convenience function for parsing JSON as a JavaScript object
+			let response=JSON.parse(xhr.responseText)
+			
+			let div = document.getElementById('employeeDataDiv')
+			let newDiv = document.createElement('div')
+			let employeeId = document.createElement('h2')
+			let name = document.createElement('p')
+			let department = document.createElement('p')
+			
+			
+			employeeId.innerText = "Employee ID: "+response.employeeId
+			name.innerText = "Employee Name: "+response.info.lastName+", "+response.info.firstName
+			department.innerText = "Department: "+response.department.departmentName
+				
+			newDiv.append(employeeId)
+			newDiv.append(name)
+			newDiv.append(department)
+			
+			div.append(newDiv)
         }
      }
 
@@ -24,4 +40,5 @@ function getRequest(){
     xhr.open('GET', url) //RS 1
     xhr.send() //RS2
 }
-
+         
+     

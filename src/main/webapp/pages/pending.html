@@ -2,78 +2,20 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Your Pending Requests</title>
 <link href="styles/pending.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<div class="container request-details">
-    <div id="firstRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="firstApprove" id="firstApprove" value="Approve">
-          <input type="button" name="firstReject" id="firstReject" value="Reject">
-        </p>
-    </div>
-    <div id="secondRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="secondApprove" id="secondApprove" value="Approve">
-          <input type="button" name="secondReject" id="secondReject" value="Reject">
-        </p>
-    </div>
-    <div id="thirdRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="thirdApprove" id="thirdApprove" value="Approve">
-          <input type="button" name="thirdReject" id="thirdReject" value="Reject">
-        </p>
-    </div>
-    <div id="fourthRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="fourthApprove" id="fourthApprove" value="Approve">
-          <input type="button" name="fourthReject" id="fourthReject" value="Reject">
-        </p>
-    </div>
-    <div id="fifthRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="fifthApprove" id="fifthApprove" value="Approve">
-          <input type="button" name="fifthReject" id="fifthReject" value="Reject">
-        </p>
-    </div>
-    <div id="sixthRequest" class="Request">
-        <p>Request ID: {{Request.id}}</p>
-        <p>Employee ID: {{Employee.employeeId}}</p>
-        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        <p>Request Amount $: {{Request.amount}}</p>
-        <p>Request Reason: {{Request.reason}}</p>
-        <p>
-          <input type="button" name="sixthApprove" id="sixthApprove" value="Approve">
-          <input type="button" name="sixthReject" id="sixthReject" value="Reject">
-        </p>
-    </div>
-</div>
+	<div class="container" id="containerBase">
+   	 	<div id="request" class="Request">
+        	<p>Request ID: {{Request.id}}</p>
+       	 	<p>Employee ID: {{Employee.employeeId}}</p>
+       		<p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
+        	<p>Request Amount $: {{Request.amount}}</p>
+        	<p>Request Reason: {{Request.reason}}</p>
+       	</div>
+   	</div>
+<script src="./scripts/pending.js"></script>
 </body>
 </html>

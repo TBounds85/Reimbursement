@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "\"reimbursement\"")
+@Table(name = "employee", schema = "\"reimbursement\"")
 public class Employee {
 
 	@Id

@@ -4,37 +4,25 @@
 <meta charset="ISO-8859-1">
 <title>Welcome Home!</title>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="./styles/home.css"><style type="text/css"></style></link>
+<link rel="stylesheet" href="./styles/home.css"><style type="text/css"></style>
 </head>
 
 <body>
 	<header>
-	  <h3 align="right">
-	    <form method="get" id="logoutButton" action="/Reimbursement/">
-			<button>Logout</button></form>
-</h3>
-	  <h1 align="center">Reimbursement Services</h1>
+	  <h3 align="right"><form  method="get" id="logoutButton" action="/Reimbursement/api/logout"><button>Logout</button></form></h3>
+	  <h1 align="center">Employee Reimbursement Services</h1>
     </header>
-<div id="employeeDataDiv">
-  	<div>
-		<h2>Employee ID: {{Employee.employeeId}}</h2>
-		<p>Employee Name: {{Employee.lastName}},&nbsp; {{Employee.firstName}}</p>
-		<p>Department: {{Employee.department}}</p>
-	</div>
-	<form method="get" id="infoButton" action="/Reimbursement/pages/info.html">
-			<button>Edit Personal Information</button></form>
+<div>
+  	<div id="employeeDataDiv"></div>
+	<form method="get" id="infoButton" action="/Reimbursement/pages/info.html"><button>Edit Personal Information</button></form>
   <div>
     <h2> Requests</h2>
-  </div>
-  	<form method="get" id="newRequestButton" action="/Reimbursement/pages/requestform.html">
-		<button>Submit New Request</button></form>
-	<form method="get" id="pendingButton" action="/Reimbursement/pages/pending.html">
-		<button>Pending Requests</button></form>
-	<form method="get" id="resolvedButton" action="/Reimbursement/pages/resolved.html">
-		<button>Resolved Requests</button></form>
-	
-
 </div>
-<script  src="./scripts/home.js"></script>
+  	<form method="get" id="newRequestButton" action="/Reimbursement/pages/requestform.html"><button>Submit New Request</button></form>
+	<form method="get" id="pendingButton" action="/Reimbursement/pages/pending.html"><button>Pending Requests</button></form>
+	<form method="get" id="resolvedButton" action="/Reimbursement/pages/resolved.html"><button>Resolved Requests</button></form>
+		
+</div>
+<script src="./scripts/home.js"></script>
 </body>
 </html>

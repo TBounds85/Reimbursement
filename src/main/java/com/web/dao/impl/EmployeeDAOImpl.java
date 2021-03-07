@@ -17,7 +17,7 @@ import com.web.util.HibernateSessionFactory;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
 	Logger log = Logger.getLogger(EmployeeDAOImpl.class);
-	
+
 	@Override
 	public boolean submitRequest(int employeeId, double requestedAmount, String reason, int managerId) {
 		try {
@@ -26,7 +26,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			s.beginTransaction();
 
 			Request request = new Request();
-			request.setRequestId(1);
+			request.setRequestId(0);
 			request.setEmployeeid(employeeId);
 			request.setRequestedAmount(requestedAmount);
 			request.setReason(reason);
@@ -53,8 +53,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
 
 			Query<Request> query = s
-					.createQuery("FROM com.web.model.Request R WHERE R.employeeid = :employeeid and R.status = :status",
-							Request.class)
+					.createQuery("FROM com.web.model.Request R WHERE R.employeeid = :employeeid and R.status = :status", Request.class)
 					.setParameter("employeeid", employeeId).setParameter("status", "Pending");
 			list = query.list();
 
@@ -65,7 +64,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 		}
 
-		return null;
+		return list;
 	}
 
 	@Override
@@ -75,11 +74,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			Session s = HibernateSessionFactory.getSession();
 			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
 
-			Query<Request> query = s
-					.createQuery("FROM com.web.model.Request R WHERE R.employeeid = :employeeid and R.status != :status",
-							Request.class)
-					.setParameter("employeeid", employeeId)
-					.setParameter("status", "Pending");
+			Query<Request> query = s.createQuery(
+					"FROM com.web.model.Request R WHERE R.employeeid = :employeeid and R.status != :status",
+					Request.class).setParameter("employeeid", employeeId).setParameter("status", "Pending");
 			list = query.list();
 
 			tx.commit();
@@ -89,7 +86,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 		}
 
-		return null;
+		return list;
 	}
 
 	@Override

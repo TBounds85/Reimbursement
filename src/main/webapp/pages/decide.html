@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Decide Request Actions</title>
+<link href="styles/pending.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	
+	<div class="container request-details">
+	    <div id="firstRequest" class="Request">
+	        <p>Request ID: {{Request.id}}</p>
+	        <p>Employee ID: {{Employee.employeeId}}</p>
+	        <p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
+	        <p>Request Amount $: {{Request.amount}}</p>
+	        <p>Request Reason: {{Request.reason}}</p>
+	        <p>
+	          <input type="button" name="Approve" id="firstApprove" value="Approve">
+	          <input type="button" name="Reject" id="firstReject" value="Reject">
+	        </p>
+	    </div>
+	    
+	        </p>
+	    </div>
+</div>
+
+</body>
+</html>

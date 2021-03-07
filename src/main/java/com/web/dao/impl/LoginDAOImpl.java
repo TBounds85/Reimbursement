@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.web.dao.LoginDAO;
-import com.web.model.Employee;
 import com.web.model.Login;
 import com.web.util.HibernateSessionFactory;
 
@@ -30,7 +29,8 @@ public class LoginDAOImpl implements LoginDAO {
 
 			// storing result <~~ of the query
 			user = s.createQuery("FROM com.web.model.Login L WHERE L.username = :username", Login.class)
-					.setParameter("username", username).getSingleResult();
+					.setParameter("username", username)
+					.getSingleResult();
 			tx.commit();
 			
 			
@@ -59,20 +59,5 @@ public class LoginDAOImpl implements LoginDAO {
 		return -1;
 	}
 
-	public Employee setupEmployee(int employeeId) {		
-		Employee e = null;
-		try{
-			Session s = HibernateSessionFactory.getSession();
-			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
-
-			// storing result <~~ of the query
-			e = s.createQuery("FROM com.web.model.Employee L WHERE L.employeeId = :employeeId", Employee.class)
-					.setParameter("employeeId", employeeId).getSingleResult();
-			tx.commit(); // commits query (Data Now Available for parsing)
-
-			}catch (HibernateException f) {
-				log.error("Hibernate error in setupEmployee()");				
-			}
-		return e;
-	}
+	
 }

@@ -9,30 +9,41 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.dao.EmployeeDAO;
 import com.web.dao.LoginDAO;
+import com.web.dao.impl.EmployeeDAOImpl;
 import com.web.dao.impl.LoginDAOImpl;
 import com.web.model.Employee;
+import com.web.service.FullService;
+import com.web.service.FullServiceImpl;
 
 public class RequestHelper {
 	
 	
-	public static int processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	static Employee e;
+	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
-		final String RESOURCE = URI.replace("/Reimbursement/", "");
-		HttpSession session = request.getSession(false);
+		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
+		HttpSession session = request.getSession();
+		FullService FS = new FullServiceImpl();
+		
 		switch(RESOURCE) {
+			
 			case "pages/home":
-				session = request.getSession();
 				
 				
-				Object e = session.getAttributeNames();
-				
-				System.out.println(e);
-				break;
+				return e;
 				
 			case "pages/Mhome":
+				
+				int employeeId1 = (int) session.getAttribute("employeeId");
+				
+				e = FS.setEmployeeToSession(request, response, employeeId1);
+				
+				return e;
+				
+			case "pages/decide":
 				
 				break;
 				
@@ -56,8 +67,8 @@ public class RequestHelper {
 				
 				break;
 			
-			case "api/logout/":
-				
+			case "api/logout":
+				session.invalidate();
 				response.sendRedirect("/Reimbursement/index.html");
 				break;
 		
@@ -70,45 +81,45 @@ public class RequestHelper {
 		}
 		return 0;
 	}
-	public static int processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public static Object processPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter writer = response.getWriter();
 		final String URI = request.getRequestURI();
-		final String RESOURCE = URI.replace("/Reimbursement/", "");
+		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
 		
-		HttpSession session = request.getSession(false);
 		
-		switch(RESOURCE) {
-		
-		case "pages/info":
-			
-			break;
-			
-		case "pages/requestform":
-		
-			break;
-			
+		EmployeeDAO dao =new EmployeeDAOImpl();
+		FullService FS = new FullServiceImpl();
+		PrintWriter writer = response.getWriter();
+		HttpSession session = request.getSession();
 
+		switch(RESOURCE) {
+				
+			case "pages/info":
+			
+				break;
+			
+			case "pages/requestform":
+			
+				break;
 		
-		case "api/editInfo":
-			break;
+			case "editInfo":
 			
-		case "api/logout":
-			session.invalidate();
-			break;
+				break;
 			
-		case "api/submitrequest":
+			case "submitrequest":
 			
+				int employeeId = (int) session.getAttribute("employeeId");
+				int managerId =  (int) session.getAttribute("managerId");
+				double amount = Double.parseDouble(request.getParameter("amount"));
+				String reason = request.getParameter("reason");
 			
+				//future home of File Received Client ~> S3Bucket
 			
-			//grab submitted data if NOT a String (int, double, boolean, etc) have to parse
-//			final int EMPLOYEEID = Integer.parseInt(request.getParameter("employeeid"));
+				dao.submitRequest(employeeId, amount, reason, managerId);
 			
-			//grab Strings
-//			final String FIRSTNAME = request.getParameter("firstname");
-			break;
+				break;
 			
-		case "api/login":
+		case "login":
 			
 			
 			final String USERNAME = request.getParameter("username");
@@ -119,16 +130,13 @@ public class RequestHelper {
 			
 			//checks if password matches database
 			int checker = LV.validate(USERNAME, PASSWORD);
-			 
+			session.setAttribute("employeeId", checker);
+			
 			if(checker != -1) {	
 				
 				//get session create Employee Object with fields
-				session = request.getSession();
-				Employee e = LV.setupEmployee(checker);
+				e = FS.setEmployeeToSession(request, response, checker);
 				
-				//set employee data to Attribute
-//				request.setAttribute("EmployeeData", e);
-				session.setAttribute("EmployeeData", e);
 				String json = new ObjectMapper().writeValueAsString(e);
 				
 				writer.write(json);	
@@ -144,12 +152,18 @@ public class RequestHelper {
 				response.sendRedirect("/Reimbursement/invalid.html");
 			break;
 		
+		case "logout":
+			session.invalidate();
+			break;
+			
 		default:
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");
 			break;
 		}
-		return 0;
+		
+		
+		return e;
 		
 	}
 
