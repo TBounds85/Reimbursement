@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.EmployeeDAO;
 import com.web.dao.LoginDAO;
+import com.web.dao.ManagerDAO;
 import com.web.dao.impl.EmployeeDAOImpl;
 import com.web.dao.impl.LoginDAOImpl;
+import com.web.dao.impl.ManagerDAOImpl;
 import com.web.model.Employee;
 import com.web.model.Request;
 import com.web.service.FullService;
@@ -27,6 +29,7 @@ public class RequestHelper {
 			throws ServletException, IOException {
 
 		EmployeeDAO dao = new EmployeeDAOImpl();
+		ManagerDAO mdao = new ManagerDAOImpl();
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
 		HttpSession session = request.getSession();
@@ -34,48 +37,58 @@ public class RequestHelper {
 		switch (RESOURCE) {
 
 		case "pages/home":
-
 			return e;
 
 		case "pages/Mhome":
-
 			return e;
-
+		
+		case "viewMyEmployees":
+			int departmentId = (int) session.getAttribute("departmentId");
+			List<Employee> list = mdao.assignedEmployee(departmentId);
+			return list;
+			
+		case "viewAllEmployees":
+			List<Employee> list1 = mdao.allEmployees();
+			return list1;
+		
 		case "pages/decide":
-
-			return e;
+			int managerId = e.getEmployeeId();
+			List<Request> list3 = mdao.requestsByDepartment(managerId);
+			return list3;
 
 		case "pages/info":
-			// done
 			return e;
 
 		case "pages/requestform":
-			// done
 			return e;
 
 		case "pages/pending":
 			int employeeId = (int) session.getAttribute("employeeId");
-			List<Request> list = dao.pendingRequests(employeeId);
-			return list;
+			List<Request> list4 = dao.pendingRequests(employeeId);
+			return list4;
 
 		case "pages/resolved":
 			employeeId = (int) session.getAttribute("employeeId");
-			List<Request> list1 = dao.resolvedRequests(employeeId);
-			return list1;
-
-		case "api/logout":
+			List<Request> list2 = dao.resolvedRequests(employeeId);
+			return list2;
+			
+		case "viewallresolved":
+			//manager function view all resolved requests for all employees
+			break;
+			
+		case "logout":
 			session.invalidate();
 			response.sendRedirect("/Reimbursement/index.html");
 			break;
 
 		default:
-
 			response.setStatus(404);
 			response.sendRedirect("/Reimbursement/404.html");
 			break;
 
 		}
 		return e;
+		
 	}
 
 	public static Object processPost(HttpServletRequest request, HttpServletResponse response)
@@ -90,11 +103,16 @@ public class RequestHelper {
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 
-		
-		
-
 		switch (RESOURCE) {
 
+		case "denyrequest":
+			
+			break;
+			
+		case "approverequest":
+			
+			break;
+			
 		case "editinfo":
 			//data variables that don't change with update
 			String firstName = (String) session.getAttribute("firstName");

@@ -12,37 +12,34 @@
 <body>
 
 	<header>
-		<h3 align="right">
-			<form method="get" id="logoutButton" action="/Reimbursement/api/logout">
-				<button>Logout</button>
-			</form>
-		</h3>
+		<h3 align="right"><form method="get" id="logoutButton" action="/Reimbursement/api/logout"><button>Logout</button></form></h3>
 		<h1 align="center">Reimbursement Manager Services</h1>
 	</header>
+	
 	<div>
 		<div id="employeeDataDiv"></div>
-		<form method="get" id="infoButton"
-			action="/Reimbursement/pages/info.html">
-			<button>Edit Personal Information</button>
-		</form>
+		
+		<form method="get" id="infoButton" 	action="/Reimbursement/pages/info.html"><button>Edit Personal Information</button></form>
+		
 		<div><h2>Personal Options</h2></div>
-		<form method="get" id="newRequestButton"
-			action="/Reimbursement/pages/requestform.html">
-			<button>Submit New Request</button>
-		</form>
-		<form method="get" id="pendingButton"
-			action="/Reimbursement/pages/pending.html">
-			<button>Pending Requests</button>
-		</form>
-		<form method="get" id="resolvedButton"
-			action="/Reimbursement/pages/resolved.html">
-			<button>Resolved Requests</button>
-		</form>
-		<div><h2>Employee Options</h2></div>
-		<form method="get" id="decideButton"
-			action="/Reimbursement/pages/decide.html">
-			<button>Your Employee's Requests</button>
-		</form>
+		
+		<form method="get" id="newRequestButton" action="/Reimbursement/pages/requestform.html"><button>Submit New Request</button></form>
+		
+		<form method="get" id="pendingButton" action="/Reimbursement/pages/pending.html"><button>Pending Requests</button></form>
+		
+		<form method="get" id="resolvedButton" action="/Reimbursement/pages/resolved.html"><button>Resolved Requests</button></form>
+		
+		<div><h2>Manage Employees</h2></div>
+		
+		<form method="get" id="viewAllEmployeeButton" action="/Reimbursement/pages/viewallemployees.html"><button>View All Employees</button></form>
+		
+		<form method="get" id="viewMyEmployeeButton" action="/Reimbursement/pages/viewmymployees.html"><button>View My Employees</button></form>
+		
+		<form method="get" id="viewallResolvedButton" action="/Reimbursement/pages/viewallresolved.html"><button>View All Resolved Requests</button></form>
+		
+		<form method="get" id="viewRequestByIdButton" action="/Reimbursement/pages/viewrequestbyid.html"><button>View Requests By Employee ID</button></form>
+		
+		<form method="get" id="approveOrRejectButton" action="/Reimbursement/pages/decide.html"><button>Approve/Reject Your Employee's Request</button></form>
 	</div>
 	
 	<script src="./scripts/Mhome.js"></script>

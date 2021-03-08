@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+header{
+	align-content: center;
+}
+
+#request{
+	border: dashed;
+	align-content: center;
+	border-color: black;
+	border-radius: 1em;
+	border-bottom-color: black;
+	}
+th{
+	
+	border-bottom-style: groove;
+}
+
+tr{
+	align-content:center;
+	border:thick;
+	border-style: solid;
+}
+
+table{
+	border: thin;
+	
+	border-style: solid;
+	}	
+
+body {
+	background-color: gold;
+	
+}
+button{ 
+	color : white;
+	background: black;
+	
+	}
+input {
+	border-radius: 1em;
+	padding: inherit;
+	background-color: black;
+	color: white;
+}

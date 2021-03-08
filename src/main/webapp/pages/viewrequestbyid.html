@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manager Options</title>
+	
+<link href="styles/viewrequestbyid.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<header>
+		<h3 align="right"><form method="get" id="logoutButton" action="/Reimbursement/api/logout"><button>Logout</button></form></h3>
+		<h1 align="center">View Request by ID</h1>
+	</header>
+	<table align="center">
+  <tbody id = "insertHere">
+    <tr>
+      <th>Request ID</th>
+      <th>Employee ID</th>
+      <th>Request Amount ($)</th>
+      <th>Reason</th>
+      <th>Status</th>
+	  <th>Manager ID</th>
+    </tr>
+    <tr></tr>
+  </tbody>
+</table>
+	
+	
+	
+	<form method="get" id="backButton" onClick="history.back()"><button>Back</button></form>
+	<script src="./scripts/viewrequestbyid.js"></script>
+</body>
+</html>

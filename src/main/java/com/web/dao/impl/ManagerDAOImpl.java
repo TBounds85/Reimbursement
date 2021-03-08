@@ -22,21 +22,22 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public List<Request> requestsByDepartment(int managerId) {
 		
 		List<Request> list = new ArrayList<>();
+		
 		try {
 			Session s = HibernateSessionFactory.getSession();
 			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
 
-			Query<Request> query = s.createQuery("FROM com.web.model.Request R WHERE R.managerid = :managerid", Request.class)
-					.setParameter("managerid", managerId);
+			Query<Request> query = s.createQuery("FROM com.web.model.Request R WHERE R.managerid = :managerid and R.status = :status ", Request.class)
+					.setParameter("managerid", managerId)
+					.setParameter("status", "Pending");
 			list = query.list();
-
 			tx.commit();
 			return list;
 
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return list;
 	}
 
 	@Override
@@ -48,8 +49,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 			Transaction tx = s.beginTransaction(); // sets tx as query+beginTransaction
 
 			Query<Request> query = s
-					.createQuery("FROM com.web.model.Request R WHERE R.employeeid = :employeeid",
-							Request.class)
+					.createQuery("FROM com.web.model.Request R WHERE R.employeeid = :employeeid", Request.class)
 					.setParameter("employeeid", employeeId);
 			list = query.list();
 
@@ -114,11 +114,13 @@ public class ManagerDAOImpl implements ManagerDAO {
 			Session s = HibernateSessionFactory.getSession();
 			s.beginTransaction();
 
-			Request request = new Request();
-			request.setRequestId(requestId);
+			Request request = s.createQuery("FROM com.web.model.Request r WHERE r.requestid = :requestid", Request.class)
+					.setParameter("requestid", requestId)
+					.getSingleResult();
+			
 			request.setStatus("Approved");
-			request.setManagerId(employeeId);
-
+			
+			
 			s.saveOrUpdate(request);
 			s.getTransaction().commit();
 			log.info("Completed Request Approval");
