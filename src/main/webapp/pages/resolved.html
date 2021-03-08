@@ -1,113 +1,32 @@
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" href="./styles/resolved.css"><style type="text/css"></style></link>
+<link rel="stylesheet" href="./styles/resolved.css"><style type="text/css"></style>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Resolved Requests</title>
 </head>
 
-<body><li></li>
-<table align="center" width="100%" border="1em">
-  <tbody>
+<body>
+<header>
+<h1 align="center">RESOLVED REQUESTS</h1>
+</header>
+<table align="center">
+  <tbody id = "insertHere">
     <tr>
-      <th scope="col">Request ID</th>
-      <th scope="col">Employee ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Request Amount ($)</th>
-      <th scope="col">Reason</th>
-      <th scope="col">Status</th>
-	  <th scope="col">Manager ID</th>
+      <th>Request ID</th>
+      <th>Employee ID</th>
+      <th>Request Amount ($)</th>
+      <th>Reason</th>
+      <th>Status</th>
+	  <th>Manager ID</th>
     </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-	  <td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
-    <tr>
-      <td>{{Request.id}}</td>
-      <td>{{Employee.id}}</td>
-      <td>{{Employee.name}}</td>
-      <td>{{Request.amount}}</td>
-      <td>{{Request.reason}}</td>
-      <td>{{Request.status}}</td>
-		<td>{{Manager.id}}</td>
-    </tr>
+    <tr></tr>
   </tbody>
 </table>
-	 <div align="center">
-   		<input type="button" name="Home" id="Home" value="Home">
-		 <div></div>
-		<input type="button" name="Previous" id="Previous" value="Prev"> 
-		<b>
-		<input type="button" name="Next" id="Next" value="Next">
+
+	 <div>
+   		<button id="backButton" onclick="history.back()">Back</button>
 	</div>
-<script type="text/javascript" src="styles/resolved.css"></script>
+<script type="text/javascript" src="./scripts/resolved.js"></script>
 </body>
 </html>

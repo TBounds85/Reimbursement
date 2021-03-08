@@ -2,38 +2,43 @@
 header{
 	align-content: center;
 }
-.container{
-    display: grid;
-    grid-template-columns: 20em 20em 20em;
-}
-.Request{
+
+#request{
+	border: dashed;
 	align-content: center;
 	border-color: black;
 	border-radius: 1em;
 	border-bottom-color: black;
-	padding: .5em;
-		
-		
-}
-body {
-	background-color: gold;
+	}
+th{
+	
+	border-bottom-style: groove;
 }
 
+tr{
+	align-content:center;
+	border:thick;
+	border-style: solid;
+}
+
+table{
+	border: thin;
+	
+	border-style: solid;
+	}	
+
+body {
+	background-color: gold;
+	
+}#backButton{ 
+	color : white;
+	background-color:black;
+	padding:inherit;
+	
+	}
 input {
 	border-radius: 1em;
 	padding: inherit;
 	background-color: black;
 	color: white;
 }
-
-p {
-	text-align: center;
-	text-decoration: blink;
-	color: black;
-	button: black;
-	
-}
-h1{
-	align-content: center;
-}
-

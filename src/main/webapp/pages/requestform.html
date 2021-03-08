@@ -3,26 +3,27 @@
 <head>
 <meta charset="utf-8">
 <title>Reimbursement Request Form</title>
-<link rel="stylesheet" href="styles/requestform.css"><style type="text/css"></style>
+<link rel="stylesheet" href="styles/requestform.css">
+<style type="text/css"></style>
 </head>
 
 <body>
 
 	<div id="message">
-	<h1>New Reimbursement Request Form</h1>
+		<h1>New Reimbursement Request Form</h1>
 	</div>
 	<div id="errorMessage"></div>
 	<form id="request" method="post" action="/Reimbursement/api/submitrequest">
-		Request Amount~~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$
-		<input type="number" placeholder="Enter $ amount" name="amount"/>
+		Request Amount~~ &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; $ 
+	    <input type="currency" placeholder="Enter $ amount" name="amount" />
 		<div class="row"></div>
-		<label for="reason">Select Reason For Request~&nbsp;</label>
-			<select name="reason" id="reason">
-					<option value="default">Select Reason</option>
-					<optgroup label="Travel Expenses">
-					<option value="Meals">Meals</option>
-					<option value="Per Diem">Per Diem</option>
-					<option value="Lodging">Lodging</option>
+		<label for="reason">Select Reason For Request&nbsp;</label> 
+		<select	name="reason" id="reason">
+			<option value="default">Select Reason</option>
+			<optgroup label="Travel Expenses">
+				<option value="Meals">Meals</option>
+				<option value="Per Diem">Per Diem</option>
+				<option value="Lodging">Lodging</option>
 			</optgroup>
 			<optgroup label="Business Expenses">
 				<option value="Supplies">Supply Purchase</option>
@@ -30,25 +31,23 @@
 				<option value="Miscellaneous">Miscellaneous</option>
 			</optgroup>
 		</select>
-	<button id="submitButton">Submit</button>
+		<div class="row"></div>
+		<button id="submitButton">Submit</button>&nbsp;
 	</form>
+	<div><button name="backButton" onclick="history.back()">BACK</button></div>
 
 
+	
 
-<!--		<div class="row"></div>
+
+	<!--	<div class="row"></div>
 		<div>
 			<label for="fileField">Additional Documentation ~</label>
       		<input type="file" name="submittedfile" id="submittedfile">
       		<p>&nbsp;</p>
 		</div>
-	-->
-		
-	
-	
-	
-		
-		
-	<button name="backButton" onclick="history.back()">BACK</button>	
-<script src="./scripts/requestform.js"></script>
+-->
+
+	<script src="./scripts/requestform.js"></script>
 </body>
 </html>

@@ -1,30 +1,44 @@
 @charset "ISO-8859-1";
-.container{
-    display: grid;
-    grid-template-columns: 20em 20em 20em 20em;
-
-}
-
-
 header{
 	align-content: center;
 }
+
+#request{
+	border: dashed;
+	align-content: center;
+	border-color: black;
+	border-radius: 1em;
+	border-bottom-color: black;
+	}
+th{
+	
+	border-bottom-style: groove;
+}
+
+tr{
+	align-content:center;
+	border:thick;
+	border-style: solid;
+}
+
+table{
+	border: thin;
+	
+	border-style: solid;
+	}	
+
 body {
 	background-color: gold;
-}
+	
+}#backButton{ 
+	color : white;
+	background-color:black;
+	padding:inherit;
+	
+	}
 input {
 	border-radius: 1em;
 	padding: inherit;
 	background-color: black;
 	color: white;
 }
-
-.request{
-    border-style: groove;
-    border-radius: 0.5em;
-    height: 15em;
-    width: 15em;
-    margin-top: 2em;
-    margin-right: 2em;
-}
-

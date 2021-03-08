@@ -3,6 +3,8 @@ package com.web.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityTransaction;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -90,29 +92,31 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public void updateInformation(int employeeId, double contact, String address, String city, String state,
-			int zipcode) {
+	public void updateInformation(int employeeId, double contact, String address, String city, String state, int zipcode) {
+		
 		try {
 
 			Session s = HibernateSessionFactory.getSession();
 			s.beginTransaction();
 
-			EmployeeDetails ED = new EmployeeDetails();
-			ED.setContact(contact);
-			ED.setAddress(address);
-			ED.setCity(city);
-			ED.setState(state);
-			ED.setZipcode(zipcode);
+			EmployeeDetails details = new EmployeeDetails();
+			
+			details.setEmployeeId(employeeId);
+			details.setContact(contact);
+			details.setAddress(address);
+			details.setCity(city);
+			details.setState(state);
+			details.setZipcode(zipcode);
 
-			s.saveOrUpdate(ED);
+			s.saveOrUpdate(details);
 			s.getTransaction().commit();
+			log.info("Employee Details Updated Successfully");
 			return;
 
-		} catch (HibernateException e) {
+		} catch (HibernateException e) {			
+			System.out.println("Employee Details Not Saved");
 			e.printStackTrace();
 			return;
 		}
-
 	}
-
-}
+}//end of class

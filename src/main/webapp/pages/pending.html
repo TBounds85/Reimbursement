@@ -1,21 +1,33 @@
 <!doctype html>
 <html>
 <head>
+<link rel="stylesheet" href="./styles/resolved.css"><style type="text/css"></style>
 <meta charset="utf-8">
-<title>Your Pending Requests</title>
-<link href="styles/pending.css" rel="stylesheet" type="text/css">
+<title>Resolved Requests</title>
 </head>
 
 <body>
-	<div class="container" id="containerBase">
-   	 	<div id="request" class="Request">
-        	<p>Request ID: {{Request.id}}</p>
-       	 	<p>Employee ID: {{Employee.employeeId}}</p>
-       		<p>Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-        	<p>Request Amount $: {{Request.amount}}</p>
-        	<p>Request Reason: {{Request.reason}}</p>
-       	</div>
-   	</div>
-<script src="./scripts/pending.js"></script>
+<header>
+<h1 align="center">PENDING REQUESTS</h1>
+</header>
+<table>
+
+  <tbody id = "insertHere">
+    <tr>
+      <th>Request ID</th>
+      <th>Employee ID</th>
+      <th>Request Amount ($)</th>
+      <th>Reason</th>
+      <th>Status</th>
+	  <th>Manager ID</th>
+    </tr>
+    <tr></tr>
+  </tbody>
+</table>
+
+	 <div>
+   		<button id="backButton" onclick="history.back()">Back</button>
+	</div>
+<script type="text/javascript" src="./scripts/pending.js"></script>
 </body>
 </html>

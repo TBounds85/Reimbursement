@@ -17,7 +17,9 @@ function getRequest(){
 			let response=JSON.parse(xhr.responseText)
 			
 			let div = document.getElementById('employeeDataDiv')
+			
 			let newDiv = document.createElement('div')
+			
 			let employeeId = document.createElement('h2')
 			let name = document.createElement('p')
 			let department = document.createElement('p')

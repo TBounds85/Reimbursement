@@ -61,7 +61,9 @@ public class FullServiceImpl implements FullService {
 				hs.setAttribute("managerId", d.getManagerId());
 				
 				if(hs.getAttribute("managerId").equals(hs.getAttribute("employeeId"))){
-					hs.setAttribute("managerId", 999);
+					if(hs.getAttribute("managerId").equals(0)) {
+						hs.setAttribute("managerId", 999);
+					}else hs.setAttribute("managerId", 0);
 				}
 				
 				}catch (HibernateException f) {

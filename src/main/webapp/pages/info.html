@@ -9,24 +9,25 @@
 </head>
 
 <body>
-	<header align="center"><h1>Update Personal Information</h1></header>
-		<div id="personalData" >
-	      <h2>Employee # {{Employee.employeeId}}</h2>
-		    <p >Name: {{Employee.lastName}}, {{Employee.firstName}}</p>
-            <p>Contact #:  {{Employee.contact}}
-		  <input id="contact" class="contactbox"></p>
-          <p>Address:    {{Employee.address}&nbsp; &nbsp; &nbsp;
-			<input id="address" class="addressbox"></p>
-            <p>City:       {{Employee.city}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   
-			<input id="city" class="citybox"></p>
-            <p>State:      {{Employee.state}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-		  <input id="state" class="statebox"></p>
-             {{Employee.lastName}}
-          <button id="submitChanges" method="post" >Submit Changes</button> 
-          <button name="backButton" onclick="history.back()">Cancel</button>
-        
-        </div>
-    
+	<header ><h1>Update Personal Information</h1></header>
+		<div id="personalData" ></div>
+	    <div>
+	    	<form id="EditData" method="post" action="/Reimbursement/api/editinfo">
+		  		<div id="contact"></div>
+				<input id="contactinput" name="contactinput" class="contact" placeholder="Phone Number">
+				<div id="address"></div>
+				<input id="addressinput" class="addressinput" placeholder="Address">  
+				<div id="city"></div>
+				<input id="cityinput" class="cityinput" placeholder="City">
+		  		<div id="state"></div>
+				<input id="stateinput"  max="2" class="stateinput" placeholder="State (abv)">
+          		<div id="zip"></div>
+				<input id="zipinput" class="zipinput" placeholder="Zip Code">
+          	
+          	<div><button id="submitButton">Submit</button></div> &nbsp;
+          	</form>
+        	<div><button name="backButton" onclick="history.back()">Cancel</button></div>
+    </div>
 <script src="./scripts/info.js"></script>
 </body>
 </html>
