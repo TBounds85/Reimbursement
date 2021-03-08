@@ -1,5 +1,5 @@
 let inputs = document.getElementsByTagName('input');
-let insertRow = document.createElement('div class="row"');
+let insertRow = document.createElement('div');
 let submitButton = document.getElementsByName("submitButton");
 
 submitButton.addEventListener('click', VerifyInputs);

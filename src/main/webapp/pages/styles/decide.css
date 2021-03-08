@@ -4,7 +4,6 @@ body {
 	background-color: gold;
 }
 
-
 p {
 	text-align: center;
 	text-decoration: blink;
@@ -18,14 +17,11 @@ button {
 
 .container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	column-gap: 5em;
 	margin-left:10em;
 	margin-top:5em;
 	margin-right:10em;
 	text-align: center;
-	align-content: center;
-}
-
-form {
+	align-content: left;
 }

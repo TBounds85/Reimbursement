@@ -1,9 +1,9 @@
-window.onload = () => {
-	getRequest()
-}
+let button=document.getElementsByName("submitButton")
+
+button.addEventListener('click', getRequest)
 
 function getRequest(){
-    let url = 'http://localhost:8080/Reimbursement/api/'
+    let url = 'http://localhost:8080/Reimbursement/api/viewrequestbyid'
     let xhr = new XMLHttpRequest() //RS0
     
 	xhr.onreadystatechange = function(){
@@ -52,8 +52,7 @@ function getRequest(){
 		}
      }
 
-    
-
-    xhr.open('GET', url) //RS 1
-    xhr.send() //RS2
+xhr.open('GET', url) //RS 1
+xhr.send() //RS2
 }
+

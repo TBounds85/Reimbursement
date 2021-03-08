@@ -16,7 +16,7 @@ function getRequest(){
 			let table = document.getElementById("insertHere")
 
 			
-			console.log(requests)
+			//console.log(requests)
 			
 			for(let r of requests){
 				

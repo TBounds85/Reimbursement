@@ -39,6 +39,6 @@ button{
 input {
 	border-radius: 1em;
 	padding: inherit;
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 }

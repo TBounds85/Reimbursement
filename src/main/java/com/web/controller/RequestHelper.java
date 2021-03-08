@@ -52,7 +52,7 @@ public class RequestHelper {
 			return list1;
 		
 		case "pages/decide":
-			int managerId = e.getEmployeeId();
+			int managerId = (int) session.getAttribute("employeeId");
 			List<Request> list3 = mdao.requestsByDepartment(managerId);
 			return list3;
 
@@ -73,9 +73,16 @@ public class RequestHelper {
 			return list2;
 			
 		case "viewallresolved":
+			List<Request> list5 = mdao.allResolvedRequests();
 			//manager function view all resolved requests for all employees
-			break;
+			return list5;
 			
+		case "viewrequestbyid":
+			int employeeId1 = Integer.parseInt(request.getParameter("submittedId"));
+			System.out.println(employeeId1+" this is employee ID after parsing");
+			List<Request> list11 = mdao.requestsByEmployeeId(employeeId1);
+			return list11;	
+		
 		case "logout":
 			session.invalidate();
 			response.sendRedirect("/Reimbursement/index.html");
@@ -97,12 +104,16 @@ public class RequestHelper {
 		final String URI = request.getRequestURI();
 		final String RESOURCE = URI.replace("/Reimbursement/api/", "");
 
+		//manipulators 
 		LoginDAO LV = new LoginDAOImpl();
 		EmployeeDAO dao = new EmployeeDAOImpl();
+		ManagerDAO mdao = new ManagerDAOImpl();
 		FullService FS = new FullServiceImpl();
+		
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 
+		 
 		switch (RESOURCE) {
 
 		case "denyrequest":
@@ -110,10 +121,17 @@ public class RequestHelper {
 			break;
 			
 		case "approverequest":
-			
+				
 			break;
 			
+		case "viewrequestbyid":
+			int employeeId = Integer.parseInt(request.getParameter("submittedId"));
+			System.out.println(employeeId+" this is employee ID after parsing");
+			List<Request> list = mdao.requestsByEmployeeId(employeeId);
+			return list;	
+			
 		case "editinfo":
+			
 			//data variables that don't change with update
 			String firstName = (String) session.getAttribute("firstName");
 			String lastName = (String) session.getAttribute("lastName");
@@ -128,18 +146,6 @@ public class RequestHelper {
 			
 			double contact;
 			int zipcode;
-			
-//			//test to see variables after sent
-//			System.out.println("BEFORE TRY/CATCHES raw input data\n");
-//			System.out.println(firstName);
-//			System.out.println(lastName);
-//			System.out.println(dob);
-//			System.out.println(contactstring);
-//			System.out.println(address);
-//			System.out.println(city);
-//			System.out.println(state);
-//			System.out.println(zipcodestring);
-			
 			
 			try{
 				zipcode = Integer.parseInt(zipcodestring);
@@ -165,16 +171,7 @@ public class RequestHelper {
 				state = (String) session.getAttribute("state");
 			}			
 			
-//			//test to see variables after parse/replacement
-//			System.out.println("AFTER TRY/CATCHES/IF --- parsed/replaced data\n");
-//			System.out.println(firstName);
-//			System.out.println(lastName);
-//			System.out.println(dob);
-//			System.out.println(contact);
-//			System.out.println(address);
-//			System.out.println(city);
-//			System.out.println(state);
-//			System.out.println(zipcode);
+
 						
 			// update Employee Information
 			dao.updateInformation(e.getEmployeeId(), firstName, lastName, dob ,contact, address, city, state, zipcode);
@@ -190,7 +187,7 @@ public class RequestHelper {
 
 		case "submitrequest":
 
-			int employeeId = (int) session.getAttribute("employeeId");
+			int employeeId1 = (int) session.getAttribute("employeeId");
 			int managerId = (int) session.getAttribute("managerId");
 			String reason = request.getParameter("reason");
 			String amountString = request.getParameter("amount");
@@ -205,7 +202,7 @@ public class RequestHelper {
 
 			// future home of File Received Client ~> S3Bucket
 
-			dao.submitRequest(employeeId, amount, reason, managerId);
+			dao.submitRequest(employeeId1, amount, reason, managerId);
 
 			if (e.isManager() == true) {
 				response.sendRedirect("/Reimbursement/pages/Mhome.html");

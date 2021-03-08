@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -26,9 +26,12 @@
   </tbody>
 </table>
 	
+	<form name="form" method="post">
+		<input type="number" placeholder="Enter Employee ID" name="submittedId"/>
+		<button type="button" id="submitButton">Submit</button></form>
 	
+	<form method="get" id="menuButton" onClick="history.back()"><button>Back</button></form>
 	
-	<form method="get" id="backButton" onClick="history.back()"><button>Back</button></form>
 	<script src="./scripts/viewrequestbyid.js"></script>
 </body>
 </html>
