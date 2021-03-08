@@ -90,35 +90,76 @@ public class RequestHelper {
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
 
+		
+		
+
 		switch (RESOURCE) {
 
 		case "editinfo":
-			System.out.println(request);
-			System.out.println(response);
-			double contact = Double.parseDouble(request.getParameter("contactinput"));
+			//data variables that don't change with update
+			String firstName = (String) session.getAttribute("firstName");
+			String lastName = (String) session.getAttribute("lastName");
+			String dob = (String) session.getAttribute("dob");
+			
+			//editable variables
 			String address = request.getParameter("addressinput");
 			String city = request.getParameter("cityinput");
 			String state = request.getParameter("stateinput");
-			int zip = Integer.parseInt(request.getParameter("zipinput"));
-
-			if (contact == 0) {
+			String zipcodestring = request.getParameter("zipinput");
+			String contactstring = request.getParameter("contactinput");
+			
+			double contact;
+			int zipcode;
+			
+//			//test to see variables after sent
+//			System.out.println("BEFORE TRY/CATCHES raw input data\n");
+//			System.out.println(firstName);
+//			System.out.println(lastName);
+//			System.out.println(dob);
+//			System.out.println(contactstring);
+//			System.out.println(address);
+//			System.out.println(city);
+//			System.out.println(state);
+//			System.out.println(zipcodestring);
+			
+			
+			try{
+				zipcode = Integer.parseInt(zipcodestring);
+			}catch (NumberFormatException e) {
+				zipcode = (int) session.getAttribute("zip");
+			}
+			
+			try{
+				contact = Double.parseDouble(contactstring);
+			}catch (NumberFormatException e) {
 				contact = (double) session.getAttribute("contact");
 			}
-			if (address.equals("")) {
+			
+			if (address == "") {
 				address = (String) session.getAttribute("address");
 			}
-			if (city.equals("")) {
+			
+			if (city == ""){
 				city = (String) session.getAttribute("city");
 			}
-			if (state.equals("")) {
+			
+			if (state == "") {
 				state = (String) session.getAttribute("state");
-			}
-			if (zip == 0) {
-				zip = (int) session.getAttribute("zip");
-			}
-
+			}			
+			
+//			//test to see variables after parse/replacement
+//			System.out.println("AFTER TRY/CATCHES/IF --- parsed/replaced data\n");
+//			System.out.println(firstName);
+//			System.out.println(lastName);
+//			System.out.println(dob);
+//			System.out.println(contact);
+//			System.out.println(address);
+//			System.out.println(city);
+//			System.out.println(state);
+//			System.out.println(zipcode);
+						
 			// update Employee Information
-			dao.updateInformation(e.getEmployeeId(), contact, address, city, state, zip);
+			dao.updateInformation(e.getEmployeeId(), firstName, lastName, dob ,contact, address, city, state, zipcode);
 
 			// returns to Home Screen based on manager boolean
 			if (e.isManager() == true) {
@@ -126,9 +167,8 @@ public class RequestHelper {
 				break;
 
 			} else
-
 				response.sendRedirect("/Reimbursement/pages/home.html");
-			break;
+				break;
 
 		case "submitrequest":
 

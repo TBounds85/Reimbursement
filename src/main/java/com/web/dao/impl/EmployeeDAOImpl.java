@@ -92,7 +92,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public void updateInformation(int employeeId, double contact, String address, String city, String state, int zipcode) {
+	public void updateInformation(int employeeId, String firstName, String lastName, String dob, double contact, String address, String city, String state, int zipcode) {
 		
 		try {
 
@@ -100,8 +100,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			s.beginTransaction();
 
 			EmployeeDetails details = new EmployeeDetails();
-			
 			details.setEmployeeId(employeeId);
+			details.setFirstName(firstName);
+			details.setLastName(lastName);
+			details.setDob(dob);
 			details.setContact(contact);
 			details.setAddress(address);
 			details.setCity(city);

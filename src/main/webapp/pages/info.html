@@ -10,19 +10,20 @@
 
 <body>
 	<header ><h1>Update Personal Information</h1></header>
+		<h5>**updated employee information will be reflected with next Login**</h5>
 		<div id="personalData" ></div>
 	    <div>
 	    	<form id="EditData" method="post" action="/Reimbursement/api/editinfo">
 		  		<div id="contact"></div>
-				<input id="contactinput" name="contactinput" class="contact" placeholder="Phone Number">
+				<input name="contactinput" type="number" placeholder="Phone# (only Numbers)">
 				<div id="address"></div>
-				<input id="addressinput" class="addressinput" placeholder="Address">  
+				<input name = "addressinput" type="text" placeholder="Address">  
 				<div id="city"></div>
-				<input id="cityinput" class="cityinput" placeholder="City">
+				<input name="cityinput" type="text" placeholder="City">
 		  		<div id="state"></div>
-				<input id="stateinput"  max="2" class="stateinput" placeholder="State (abv)">
+				<input name="stateinput" type="text" max="2" placeholder="State (abv)">
           		<div id="zip"></div>
-				<input id="zipinput" class="zipinput" placeholder="Zip Code">
+				<input name="zipinput" type="number" placeholder="5-digit Zipcode">
           	
           	<div><button id="submitButton">Submit</button></div> &nbsp;
           	</form>
