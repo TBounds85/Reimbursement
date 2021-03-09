@@ -138,11 +138,15 @@ public class ManagerDAOImpl implements ManagerDAO {
 
 			Session s = HibernateSessionFactory.getSession();
 			s.beginTransaction();
+			
+			Request request = s.createQuery("FROM com.web.model.Request r WHERE r.requestid = :requestid", Request.class)
+					.setParameter("requestid", requestId)
+					.getSingleResult();
 
-			Request request = new Request();
-			request.setRequestId(requestId);
+			
+			
 			request.setStatus("Rejected");
-			request.setManagerId(employeeId);
+			
 
 			s.saveOrUpdate(request);
 			s.getTransaction().commit();

@@ -1,14 +1,12 @@
-let button=document.getElementsByName("submitButton")
-
-button.addEventListener('click', getRequest)
 
 function getRequest(){
-    let url = 'http://localhost:8080/Reimbursement/api/viewrequestbyid'
+	const id=document.getElementById("employeeId").value;
+    let url = 'http://localhost:8080/Reimbursement/api/viewrequestbyid?employeeId='+id
     let xhr = new XMLHttpRequest() //RS0
     
 	xhr.onreadystatechange = function(){
 		
-		if(xhr.readyState == 4 && xhr.status == 200){
+		if(xhr.readyState === 4 && xhr.status === 200){
 			
 			//JSON.parse is a convenience function for parsing JSON as a JavaScript object
 			let requests=JSON.parse(xhr.responseText)

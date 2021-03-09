@@ -10,9 +10,40 @@
 		<h3 align="right"><form method="get" id="logoutButton" action="/Reimbursement/api/logout"><button>Logout</button></form></h3>
 		<h1 align="center">My Department's Pending Requests</h1>
 	</header>
-	<div class="container">
-	    <div id="insertHere"></div>
-	</div>        
+	<table align="center">
+  <tbody id = "insertHere">
+    <tr>
+      <th>Request ID</th>
+      <th>Employee ID</th>
+      <th>Request Amount ($)</th>
+      <th>Reason</th>
+      <th>Status</th>
+	  <th>Manager ID</th>
+    </tr>
+    <tr></tr>
+  </tbody>
+</table>
+	
+	
+	
+	<form name="form" method="post" action="/Reimbursement/api/approverequest">
+	<input type="number" id= "requestId" placeholder="Enter Request ID" name="requestId"/>
+	<button>Approve</button></form>	  
+		
+	
+	<form name="form" method="post" action="/Reimbursement/api/denyrequest">
+	<input hidden="true" value="requestId" placeholder="Enter Request ID" name="requestId"/>
+	<button>Reject</button>
+	</form>
+
+		
+		
+		
+		
+		
+		
+		<form method="get" id="menuButton" onClick="history.back()"><button>Back</button></form>
+	
 
 <script src="scripts/decide.js"></script>
 </body>

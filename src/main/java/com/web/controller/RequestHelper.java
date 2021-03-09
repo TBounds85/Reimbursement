@@ -52,7 +52,7 @@ public class RequestHelper {
 			return list1;
 		
 		case "pages/decide":
-			int managerId = (int) session.getAttribute("employeeId");
+			int managerId = e.getEmployeeId(); //ensures only managers can approve requests for their own people if employees try to come here wont show them anything
 			List<Request> list3 = mdao.requestsByDepartment(managerId);
 			return list3;
 
@@ -78,7 +78,7 @@ public class RequestHelper {
 			return list5;
 			
 		case "viewrequestbyid":
-			int employeeId1 = Integer.parseInt(request.getParameter("submittedId"));
+			int employeeId1 = (int) session.getAttribute("employeeId");
 			System.out.println(employeeId1+" this is employee ID after parsing");
 			List<Request> list11 = mdao.requestsByEmployeeId(employeeId1);
 			return list11;	
@@ -118,10 +118,12 @@ public class RequestHelper {
 
 		case "denyrequest":
 			
+			//mdao.denyRequest(requestId, employeeId);
 			break;
 			
 		case "approverequest":
-				
+			 //mdao.approveRequest(requestId, employeeId);
+
 			break;
 			
 		case "viewrequestbyid":

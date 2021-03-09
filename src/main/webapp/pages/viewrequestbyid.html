@@ -26,9 +26,9 @@
   </tbody>
 </table>
 	
-	<form name="form" method="post">
-		<input type="number" placeholder="Enter Employee ID" name="submittedId"/>
-		<button type="button" id="submitButton">Submit</button></form>
+	<form name="form" method="get" action="/Reimbursement/api/viewrequestbyid">
+		<input type="number" id= "employeeId" placeholder="Enter Employee ID" name="submittedId"/>
+		<button type="button" onClick="getRequest()" id="submitButton">Submit</button></form>
 	
 	<form method="get" id="menuButton" onClick="history.back()"><button>Back</button></form>
 	

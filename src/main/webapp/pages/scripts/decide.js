@@ -3,50 +3,51 @@ window.onload = () => {
 }
 
 function getRequest(){
-    let url = 'http://localhost:8080/Reimbursement/api/pages/decide'
+    let url = 'http://localhost:8080/Reimbursement/api/pages/decide';
     let xhr = new XMLHttpRequest() //RS0
     
 	xhr.onreadystatechange = function(){
 		
-		if(xhr.readyState == 4 && xhr.status == 200){
+		if(xhr.readyState === 4 && xhr.status === 200){
 			
 			//JSON.parse is a convenience function for parsing JSON as a JavaScript object
 			let requests=JSON.parse(xhr.responseText)
+			let table = document.getElementById("insertHere")
 			
-			let insertDiv = document.getElementById("insertHere")
 
 			
 			console.log(requests)
-			
-			for(let r of requests){
 				
-				let newdiv = document.createElement('div class="container"')
+				for(let r of requests){
 				
-				let requestId = document.createElement('div')
-				requestId.innerHTML = "Request Id: "+r.requestId;
+					
+				let row = document.createElement('tr')
 				
-				let employeeid = document.createElement('div')
-				employeeid.innerHTML = "Employee Id: "+r.employeeid;
+				let requestId = document.createElement('td')
+				requestId.innerHTML = r.requestId;
 				
-				let requestedAmount = document.createElement('div')
-				requestedAmount.innerHTML= "Requested Amount: "+r.requestedAmount;
+				let employeeid = document.createElement('td')
+				employeeid.innerHTML = r.employeeid;
 				
-				let reason = document.createElement('div')
-				reason.innerHTML = "Reason: "+r.reason;
+				let requestedAmount = document.createElement('td')
+				requestedAmount.innerHTML= r.requestedAmount;
 				
-				let status = document.createElement('div')
-				status.innerHTML = "Status: "+r.status;
+				let reason = document.createElement('td')
+				reason.innerHTML = r.reason;
 				
-				let managerId = document.createElement('div')
-				managerId.innerHTML= "manager Id: "+r.managerId;
+				let status = document.createElement('td')
+				status.innerHTML = r.status;
 				
-				newdiv.append(requestId)
-				newdiv.append(employeeid)
-				newdiv.append(requestedAmount)
-				newdiv.append(reason)
-				newdiv.append(status)
-				newdiv.append(managerId)
-				insertDiv.append(newdiv)
+				let managerId = document.createElement('td')
+				managerId.innerHTML= r.managerId;
+				
+				row.append(requestId)
+				row.append(employeeid)
+				row.append(requestedAmount)
+				row.append(reason)
+				row.append(status)
+				row.append(managerId)
+				table.append(row)
 				
 			}
 		}
